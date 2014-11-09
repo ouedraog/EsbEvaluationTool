@@ -1,0 +1,83 @@
+.hyperlink:hover {
+    -fx-underline: false;
+}
+
+.hyperlink:focused {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-underline: false;
+}
+.hyperlink:selected{
+    -fx-underline: false;
+}
+.hyperlink:visited{
+    -fx-underline: false;
+}
+#exitLink{
+    -fx-graphic: url("../img/exit.png");
+}
+#navigation{
+    -fx-border-color: transparent transparent  #E0E0E0  transparent;
+    -fx-border-style: solid;
+}
+#saveLink{
+    -fx-background-color: #418B19;
+    -fx-text-fill: white;
+
+}
+.add{
+       -fx-graphic:url("../img/add.png"); 
+}
+#loadScenario{
+    //-fx-background-color: #0077A3;
+    -fx-text-fill:#0077A3;
+    -fx-font-size:24;
+}
+#selectPredScenario{
+    //-fx-background-color: #00A89C;
+    //-fx-text-fill: white;
+    -fx-text-fill:#00A89C;
+    -fx-font-size:24;
+}
+.label, .hyperlink{
+    -fx-font: Segoe UI Light;
+}
+#saveLinkAndNew, #createScenario{
+    -fx-background-color: #00A89C;
+    -fx-text-fill: white;
+}
+
+#pcLink{
+    -fx-graphic: url("../img/arrow2.png");
+}
+.text-field{
+    -fx-background-color:  #F8F8F8 ;
+    -fx-border-color: #808080;
+    -fx-border-radius: 5px;
+}
+.error{
+    -fx-text-fill:red;
+    -fx-graphic:url("../img/minus.png")
+}
+
+.success{
+    -fx-text-fill : #418B19;
+    -fx-graphic:url("../img/success.png")
+}
+.warning{
+    -fx-text-fill:orange;
+    -fx-graphic:url("../img/warning.png");
+}
+.combo-box{
+    -fx-background-color: lightgrey;
+}
+#emuStart{
+    -fx-graphic: url("../img/play.png");
+}
+
+.help{
+    -fx-graphic: url("../img/info.png");
+}
+#emuProgress{
+   -fx-margin : 0 50 0 0 ;
+}

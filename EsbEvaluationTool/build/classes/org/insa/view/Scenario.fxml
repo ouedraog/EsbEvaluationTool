@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+    <children>
+        <HBox id="navigation" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="nav" VBox.vgrow="NEVER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Scenario view and creation" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font name="Segoe UI Light" size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <children>
+                <GridPane HBox.hgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="278.0" minHeight="10.0" prefHeight="140.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="433.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <GridPane GridPane.rowIndex="1">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="357.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="416.0" minWidth="10.0" prefWidth="384.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="580.0" minWidth="10.0" prefWidth="377.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Hyperlink id="loadScenario" text="Load scenario" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Hyperlink>
+                                <Hyperlink id="createScenario" text="+ Create new scenario" GridPane.columnIndex="2">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Hyperlink>
+                                <ComboBox id="selectPredScenario" prefHeight="51.0" prefWidth="373.0" promptText="Select predifined scenario" GridPane.columnIndex="1" />
+                            </children>
+                        </GridPane>
+                        <Label id="notify" text="" GridPane.halignment="CENTER">
+                            <font>
+                                <Font name="Segoe UI Light" size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </GridPane>
+            </children>
+        </HBox>
+    </children>
+</VBox>

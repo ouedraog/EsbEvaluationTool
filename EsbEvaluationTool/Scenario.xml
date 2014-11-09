@@ -1,0 +1,22 @@
+<scenario id="0" name="Scenario">
+   <producers id="1">
+      <producer id="2" name="Airport system" location="localhost/airsystem?wsdl"/>
+   </producers>
+   <consumers id="3">
+      <consumer id="4" name="Aircraft system" location="localhost/aircraft?wsdl"/>
+   </consumers>
+   <links id="5">
+      <partnership id="6" requestSize="50" responseSize="60" requestFrequency="1" processingTime="20.0">
+         <producer ref="2"/>
+         <consumer ref="4"/>
+      </partnership>
+      <partnership id="7" requestSize="10" responseSize="200" requestFrequency="10" processingTime="20.0">
+         <producer ref="2"/>
+         <consumer ref="4"/>
+      </partnership>
+      <partnership id="8" requestSize="20" responseSize="600" requestFrequency="10" processingTime="10.0">
+         <producer ref="2"/>
+         <consumer ref="4"/>
+      </partnership>
+   </links>
+</scenario>

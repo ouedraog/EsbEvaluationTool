@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.insa.controller.MainController">
+  <children>
+      <HBox id="topWrapper" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #686868;" VBox.vgrow="NEVER">
+         <children>
+            <GridPane HBox.hgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="635.0" minWidth="10.0" prefWidth="297.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="983.0" minWidth="10.0" prefWidth="983.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Esb Evaluation Tool" textFill="WHITE" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                     <font>
+                        <Font name="Segoe UI Light" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <ToolBar id="toolbar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1">
+                    <items>
+                        <Hyperlink id="exitLink" fx:id="exitLink" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Light" size="14.0" />
+                           </font>
+                        </Hyperlink>
+                    </items>
+                  </ToolBar>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox id="sidebarLeft" prefHeight="678.0" prefWidth="162.0" style="-fx-background-color: #F0F0F0;">
+               <children>
+                  <GridPane prefHeight="678.0" prefWidth="152.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="244.0" minHeight="0.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="550.0" minHeight="2.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="606.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="606.0" minHeight="10.0" prefHeight="473.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Hyperlink fx:id="esbLink" style="-fx-text-fill: black;" styleClass="menu" text="ESB" GridPane.valignment="TOP">
+                           <font>
+                              <Font name="Segoe UI Light" size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="scenarioLink" style="-fx-text-fill: black;" styleClass="menu" text="Scenario" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <font>
+                              <Font name="Segoe UI Light" size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="emulationLink" style="-fx-text-fill: black;" styleClass="menu" text="Emulation" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                           <font>
+                              <Font name="Segoe UI Light" size="18.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="resultsLink" style="-fx-text-fill: black;" styleClass="menu" text="Results" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                           <font>
+                              <Font name="Segoe UI Light" size="18.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <VBox fx:id="contentBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox id="navigation" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Welcome to the ESB evaluation tool " HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Segoe UI Light" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="545.0" fitWidth="673.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@img/Esb.jpg" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="200.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+         <children>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="11.0" fx:id="x31" />
+               </font>
+               <textFill>
+                  <Color blue="0.625" green="0.625" red="0.625" fx:id="x41" />
+               </textFill>
+            </Label>
+            <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+            <Label font="$x31" maxWidth="-1.0" text="Right status" textFill="$x41" HBox.hgrow="NEVER" />
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@css/Main.css" />
+  </stylesheets>
+</VBox>
