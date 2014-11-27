@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/Scenario.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE scenario SYSTEM "Scenario.dtd">
+
+    <scenario>
+    ...
+    </scenario>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT scenario (producers|consumers|tasks)*>
+<!ATTLIST scenario
+    id CDATA #IMPLIED
+    name CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT producers (producer)*>
+<!ATTLIST producers
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT producer EMPTY>
+<!ATTLIST producer
+    id CDATA #IMPLIED
+    name CDATA #IMPLIED
+    location CDATA #IMPLIED
+    ref CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT consumers (consumer)*>
+<!ATTLIST consumers
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT consumer EMPTY>
+<!ATTLIST consumer
+    id CDATA #IMPLIED
+    name CDATA #IMPLIED
+    location CDATA #IMPLIED
+    ref CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT tasks (task)*>
+<!ATTLIST tasks
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT task (producer|consumer)*>
+<!ATTLIST task
+    id CDATA #IMPLIED
+    requestSize CDATA #IMPLIED
+    responseSize CDATA #IMPLIED
+    requestFrequency CDATA #IMPLIED
+    processingTime CDATA #IMPLIED
+    duration CDATA #IMPLIED
+  >
