@@ -31,7 +31,7 @@ import org.controlsfx.control.Notifications;
 import org.insa.model.Model;
 import org.insa.model.Scenario;
 import org.insa.model.beans.Consumer;
-import org.insa.model.beans.Partnership;
+import org.insa.model.beans.Task;
 import org.insa.model.beans.Producer;
 import org.insa.model.data.Data;
 import org.insa.model.parser.XmlParser;
@@ -270,11 +270,11 @@ public class MainController implements Initializable {
             notify(label, errorMsg, "error");
         }
         else{
-            Partnership p = new Partnership(producerBox.getSelectionModel().getSelectedItem(), 
+            Task p = new Task(producerBox.getSelectionModel().getSelectedItem(), 
                     consumerBox.getSelectionModel().getSelectedItem(), 
                     Integer.parseInt(requestSize.getText()), Integer.parseInt(responseSize.getText()),
-                    Integer.parseInt(frequency.getText()), Double.parseDouble(processingTime.getText()));
-            model.getScenario().addLink(p);
+                    Integer.parseInt(frequency.getText()), Integer.parseInt(processingTime.getText()));
+            model.getScenario().addTask(p);
             notify(label, "Link added successfully", "success");
         }
         return errorMsg == null;

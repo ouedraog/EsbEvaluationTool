@@ -12,17 +12,17 @@ import org.simpleframework.xml.Element;
  *
  * @author JusteAbel
  */
-public class Partnership {
+public class Task {
 
     /**
      * The producer
      */
-    @Element(name = "producer")
+    @Element
     private Producer producer;
     /**
      * The consumer
      */
-    @Element(name = "consumer")
+    @Element
     private Consumer consumer;
     /**
      * The consumer request size
@@ -44,18 +44,24 @@ public class Partnership {
      * The provider processing time
      */
     @Attribute
-    private double processingTime;
+    private int processingTime;
+    
+    /**
+     * The duration of the task
+     */
+    @Attribute
+    private int duration;
 
     /**
      * The KPI for this link
      */
     private KPI result;
     
-    public Partnership() {
+    public Task() {
     }
 
-    public Partnership(Producer producer, Consumer consumer, int requestSize, int responseSize, int requestFrequency,
-            double processingTime) {
+    public Task(Producer producer, Consumer consumer, int requestSize, int responseSize, int requestFrequency,
+            int processingTime) {
         this.producer = producer;
         this.consumer = consumer;
         this.requestSize = requestSize;
@@ -86,9 +92,6 @@ public class Partnership {
         return processingTime;
     }
 
-    public void setProcessingTime(double processingTime) {
-        this.processingTime = processingTime;
-    }
 
     public void setResult(KPI result) {
         this.result = result;
@@ -129,5 +132,18 @@ public class Partnership {
                 + ", reqPerSec = " + requestFrequency + ", request size = " + requestSize
                 + ", processingTime = " + processingTime + " )";
     }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public void setProcessingTime(int processingTime) {
+        this.processingTime = processingTime;
+    }
+    
 
 }

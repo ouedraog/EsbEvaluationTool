@@ -33,12 +33,12 @@ public class Scenario {
      * All the links between consumers and producers
      */
     @ElementList
-    private ArrayList<Partnership> links;
+    private ArrayList<Task> tasks;
 
     public Scenario() {
         this.consumers = new ArrayList<Consumer>();
         this.producers = new ArrayList<Producer>();
-        this.links = new ArrayList<Partnership>();
+        this.tasks = new ArrayList<Task>();
         this.name = "Scenario";
     }
 
@@ -48,8 +48,8 @@ public class Scenario {
      *
      * @param link
      */
-    public void addLink(Partnership link) {
-        this.links.add(link);
+    public void addTask(Task link) {
+        this.tasks.add(link);
     }
 
     /**
@@ -79,12 +79,12 @@ public class Scenario {
         this.consumers = consumers;
     }
 
-    public ArrayList<Partnership> getLinks() {
-        return links;
+    public ArrayList<Task> getLinks() {
+        return tasks;
     }
 
-    public void setLinks(ArrayList<Partnership> links) {
-        this.links = links;
+    public void setLinks(ArrayList<Task> links) {
+        this.tasks = links;
     }
 
     public ArrayList<Producer> getProducers() {
@@ -105,7 +105,7 @@ public class Scenario {
         String str = "Scenario\n\tproducers = " + producers;
         str += "\n\tconsumers = " + consumers;
         str += "\n\tlinks = [";
-        for (Partnership l : links) {
+        for (Task l : tasks) {
             str += "\n\t\t" + l;
         }
         str += "\n\t\t]";

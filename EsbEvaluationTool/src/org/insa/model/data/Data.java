@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.insa.model.Scenario;
 import org.insa.model.beans.Consumer;
-import org.insa.model.beans.Partnership;
+import org.insa.model.beans.Task;
 import org.insa.model.beans.Producer;
 import org.insa.model.parser.XmlParser;
 
@@ -23,7 +23,7 @@ import org.insa.model.parser.XmlParser;
 public class Data {
    private final   ArrayList<Producer> producers;
    private final   ArrayList<Consumer> consumers;
-   private  final double defaultProcessingTime = 50;
+   private  final int defaultProcessingTime = 50;
    private  final int defaultRequestSize = 100;
    private  final int defaultResponseSize = 200;
    private  final int defaultRequestFreq = 2;
@@ -43,15 +43,15 @@ public class Data {
      * @param processingTime
      * @return 
      */
-    public  Scenario processingTimeScenario(double processingTime){
+    public  Scenario processingTimeScenario(int processingTime){
         Scenario s = new Scenario();
         s.setName("Processing Time Scenario");
         Consumer c =  getConsumers().get(0);
         Producer p = getProducers().get(0);
-        Partnership l = new Partnership(p, c, defaultRequestSize, defaultResponseSize, defaultRequestFreq, processingTime);
+        Task l = new Task(p, c, defaultRequestSize, defaultResponseSize, defaultRequestFreq, processingTime);
         s.addConsumer(c);
         s.addProducer(p);
-        s.addLink(l);
+        s.addTask(l);
         return s;
     }
     public  Scenario dataSizeScenario(int requestSize, int responseTime){
@@ -59,10 +59,10 @@ public class Data {
         s.setName("Data Size Scenario");
         Consumer c =  getConsumers().get(0);
         Producer p = getProducers().get(0);
-        Partnership l = new Partnership(p, c, requestSize, responseTime, defaultRequestFreq, defaultProcessingTime);
+        Task l = new Task(p, c, requestSize, responseTime, defaultRequestFreq, defaultProcessingTime);
         s.addConsumer(c);
         s.addProducer(p);
-        s.addLink(l);
+        s.addTask(l);
         return s;
     }
     public  Scenario requestFrequencyScenario(int requestFrequency){
@@ -70,10 +70,10 @@ public class Data {
         s.setName("Request Frequency Scenario");
         Consumer c =  getConsumers().get(0);
         Producer p = getProducers().get(0);
-        Partnership l = new Partnership(p, c, defaultRequestSize, defaultResponseSize, requestFrequency, defaultProcessingTime);
+        Task l = new Task(p, c, defaultRequestSize, defaultResponseSize, requestFrequency, defaultProcessingTime);
         s.addConsumer(c);
         s.addProducer(p);
-        s.addLink(l);
+        s.addTask(l);
         return s;
     }
     public  ArrayList<Consumer> getConsumers() {
@@ -90,9 +90,9 @@ public class Data {
         Producer p = getProducers().get(0);
         s.addConsumer(c);
         s.addProducer(p);
-        s.addLink(new Partnership(p, c, 50, 60, 1, 20));
-        s.addLink(new Partnership(p, c, 10, 200, 10, 20));
-        s.addLink(new Partnership(p, c, 20, 600, 10, 10));
+        s.addTask(new Task(p, c, 50, 60, 1, 20));
+        s.addTask(new Task(p, c, 10, 200, 10, 20));
+        s.addTask(new Task(p, c, 20, 600, 10, 10));
         
         XmlParser.saveScenario(s, file);
     }

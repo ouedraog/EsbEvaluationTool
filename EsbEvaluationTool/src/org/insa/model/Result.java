@@ -16,7 +16,7 @@ public class Result {
      * The KPI for the defined links
      */
     @ElementList
-    private ArrayList<KPI> linkResults;
+    private ArrayList<KPI> taskResults;
 
     /**
      * The distribution of the response time
@@ -31,7 +31,7 @@ public class Result {
     private Distribution busReliabilityDist;
 
     public Result() {
-        linkResults = new ArrayList<KPI>();
+        taskResults = new ArrayList<KPI>();
         responseTimeDist = new Distribution();
         busReliabilityDist = new Distribution();
     }
@@ -41,7 +41,7 @@ public class Result {
     }
 
     public ArrayList<KPI> getLinkResults() {
-        return linkResults;
+        return taskResults;
     }
 
     public Distribution getResponseTimeDist() {
@@ -53,7 +53,7 @@ public class Result {
     }
 
     public void setLinkResults(ArrayList<KPI> linkResults) {
-        this.linkResults = linkResults;
+        this.taskResults = linkResults;
     }
 
     public void setResponseTimeDist(Distribution responseTimeDist) {
@@ -61,7 +61,7 @@ public class Result {
     }
 
    public void addLinkResult(KPI kpi){
-       this.linkResults.add(kpi);
+       this.taskResults.add(kpi);
    }
    /**
     * Compute the distributions
@@ -75,9 +75,9 @@ public class Result {
     * @return
     */
     private double[] getRespTimes(){
-        double [] result = new double[linkResults.size()];
+        double [] result = new double[taskResults.size()];
         int i=0;
-        for(KPI k : linkResults){
+        for(KPI k : taskResults){
             result[i++] = k.getResponseTime();
         }
         return result;
@@ -87,9 +87,9 @@ public class Result {
      * @return
      */
     private double[] getBusReliabilities(){
-        double [] result = new double[linkResults.size()];
+        double [] result = new double[taskResults.size()];
         int i=0;
-        for(KPI k : linkResults){
+        for(KPI k : taskResults){
             result[i++] = k.getBusReliability();
         }
         return result;
