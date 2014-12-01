@@ -35,6 +35,7 @@ import org.insa.model.beans.Task;
 import org.insa.model.beans.Producer;
 import org.insa.model.data.Data;
 import org.insa.model.parser.XmlParser;
+import org.insa.tasks.ScenarioService;
 
 /**
  * FXML Controller class
@@ -82,6 +83,7 @@ public class MainController implements Initializable {
     private ObservableList<Scenario> predifinedScenario = FXCollections.observableArrayList();
     private ObservableList<Producer> producers = FXCollections.observableArrayList();
     private ObservableList<Consumer> consumers = FXCollections.observableArrayList();
+    private ScenarioService service;
     private boolean isRunning = false;
 
     /**
@@ -309,8 +311,28 @@ public class MainController implements Initializable {
                 progress.setMaxWidth(60);
                 progress.setId("emuProgress");
                 emuBorderPane.setCenter(progress);
-                
                 Notifications.create().text("Emulation has been started").title("Emulation").showInformation();
+                
+                //start the scenario service
+                service = new ScenarioService(model);
+                service.start();
+                
+                service.setOnSucceeded(e->{
+                    progress.setVisible(false);
+                    emuStatus.setText("Scenario has been completed successfully! "
+                            + "Go to the result section to view the results");
+                    emuStatus.getStyleClass().setAll("success");
+                    Notifications.create().text("Scenario has been completed successfully!\n"
+                            + "Go to the result section to view the results").title("Emulation").showInformation();
+                });
+                
+                service.setOnFailed(e->{
+                    progress.setVisible(false);
+                    emuStatus.setText("Failed to run the scenario! ");
+                    emuStatus.getStyleClass().setAll("error");
+                    Notifications.create().text("Failed to run the scenario! ").title("Emulation").showError();
+                });
+                
             }
             isRunning = true;
         });
