@@ -1,47 +1,92 @@
 package org.insa.model.beans;
 
+import org.apache.commons.math3.stat.StatUtils;
 import org.simpleframework.xml.Attribute;
 
 /**
- * Class KPI
+ * Class Distribution
  * @author Yahya Albaba, Deepali Jain, Marc Orfila, Juste Abel Ouedraogo, Vansh Pahwa
  */
 public class KPI {
     /**
-     * Bus reliability i.e number of packets loss
+     * the minimum
      */
     @Attribute
-    private int busReliability;
+    private double min;
 
     /**
-     * Response time
+     * The maximum
      */
     @Attribute
-    private double responseTime;
+    private double max;
+
+    /**
+     * The mean
+     */
+    @Attribute
+    private double average;
+
+    /**
+     * The standard deviation
+     */
+    @Attribute
+    private double stdev;
 
     public KPI() {
     }
 
-    public KPI(int busReliability, double responseTime) {
-        this.busReliability = busReliability;
-        this.responseTime = responseTime;
+    public KPI(double min, double max, double average, double stdev) {
+        this.min = min;
+        this.max = max;
+        this.average = average;
+        this.stdev = stdev;
     }
 
-    public int getBusReliability() {
-        return busReliability;
+    public double getAverage() {
+        return average;
     }
 
-    public double getResponseTime() {
-        return responseTime;
+    public void setAverage(double average) {
+        this.average = average;
     }
 
-    public void setBusReliability(int busReliability) {
-        this.busReliability = busReliability;
+    public double getMax() {
+        return max;
     }
 
-    public void setResponseTime(double responseTime) {
-        this.responseTime = responseTime;
+    public void setMax(double max) {
+        this.max = max;
     }
 
-    
+    public double getMin() {
+        return min;
+    }
+
+    public void setMin(double min) {
+        this.min = min;
+    }
+
+    public double getStdev() {
+        return stdev;
+    }
+
+    public void setStdev(double stdev) {
+        this.stdev = stdev;
+    }
+    /**
+     * compute the distribution
+     * @param data the data
+     */
+    public void computeDist(double data[]){
+        min = StatUtils.min(data);
+        max = StatUtils.max(data);
+        average = StatUtils.mean(data);
+        stdev = Math.sqrt(StatUtils.variance(data));
+    }
+
+    @Override
+    public String toString() {
+        return "min = "+min+", max="+max+", average="+average+", stdev="+stdev;
+    }
+
 }

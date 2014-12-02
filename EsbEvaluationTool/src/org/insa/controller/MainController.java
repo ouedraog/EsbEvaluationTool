@@ -296,7 +296,7 @@ public class MainController implements Initializable {
         emuEsb.setText(model.getSelectedEsb());
         
         Scenario scenario = model.getScenario();
-        if(scenario.getLinks().isEmpty()){
+        if(scenario.getTasks().isEmpty()){
             model.setScenario(data.processingTimeScenario(10));
         }
         emuScenario.setText(model.getScenario().getName());
@@ -331,6 +331,7 @@ public class MainController implements Initializable {
                     emuStatus.setText("Failed to run the scenario! ");
                     emuStatus.getStyleClass().setAll("error");
                     Notifications.create().text("Failed to run the scenario! ").title("Emulation").showError();
+                    System.err.println(service.getException());
                 });
                 
             }

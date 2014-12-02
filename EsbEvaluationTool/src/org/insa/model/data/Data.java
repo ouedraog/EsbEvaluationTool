@@ -33,7 +33,9 @@ public class Data {
         consumers = new ArrayList<>();
         
         producers.add(new Producer("Airport system", "localhost/airsystem?wsdl"));
+        
         consumers.add(new Consumer("Aircraft system", "localhost/aircraft?wsdl"));
+        consumers.add(new Consumer("Military base", "localhost/military?wsdl"));
         
         String allESB[] = {"OpenESB"};
         esbList = new ArrayList<>(Arrays.asList(allESB));
@@ -87,12 +89,14 @@ public class Data {
     public void createSampleScenario(File file) throws Exception{
         Scenario s = new Scenario();
         Consumer c =  getConsumers().get(0);
+        Consumer c1 =  getConsumers().get(1);
         Producer p = getProducers().get(0);
         s.addConsumer(c);
         s.addProducer(p);
+        s.addConsumer(c1);
         s.addTask(new Task(p, c, 50, 60, 1, 20));
         s.addTask(new Task(p, c, 10, 200, 10, 20));
-        s.addTask(new Task(p, c, 20, 600, 10, 10));
+        s.addTask(new Task(p, c1, 20, 600, 10, 10));
         
         XmlParser.saveScenario(s, file);
     }

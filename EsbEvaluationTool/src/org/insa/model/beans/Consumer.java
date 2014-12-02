@@ -46,4 +46,10 @@ public class Consumer {
         return this.name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        Consumer other = (Consumer)o;
+        return this.name.equals(other.getName()) && this.location.equals(other.getLocation());
+    }
+    
 }

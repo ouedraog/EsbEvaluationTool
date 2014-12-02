@@ -79,7 +79,7 @@ public class Scenario {
         this.consumers = consumers;
     }
 
-    public ArrayList<Task> getLinks() {
+    public ArrayList<Task> getTasks() {
         return tasks;
     }
 

@@ -6,15 +6,15 @@
       <consumer id="4" name="Aircraft system" location="localhost/aircraft?wsdl"/>
    </consumers>
    <tasks id="5">
-      <task id="6" requestSize="50" responseSize="60" requestFrequency="1" processingTime="20" duration="10">
+      <task id="6" requestSize="50" responseSize="60" requestFrequency="1" processingTime="20" duration="0">
          <producer ref="2"/>
          <consumer ref="4"/>
       </task>
-      <task id="7" requestSize="10" responseSize="200" requestFrequency="10" processingTime="20" duration="20">
+      <task id="7" requestSize="10" responseSize="200" requestFrequency="10" processingTime="20" duration="0">
          <producer ref="2"/>
          <consumer ref="4"/>
       </task>
-      <task id="8" requestSize="20" responseSize="600" requestFrequency="10" processingTime="10" duration="30">
+      <task id="8" requestSize="20" responseSize="600" requestFrequency="10" processingTime="10" duration="0">
          <producer ref="2"/>
          <consumer ref="4"/>
       </task>
