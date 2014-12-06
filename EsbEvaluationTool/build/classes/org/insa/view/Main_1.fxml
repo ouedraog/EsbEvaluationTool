@@ -83,13 +83,16 @@
                   </GridPane>
                </children>
             </VBox>
-         
-         
-<VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="contentBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  
+
+
+<VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <HBox id="navigation" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="nav" VBox.vgrow="NEVER">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" text="ESB Evaluation" HBox.hgrow="ALWAYS">
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Scenario creation" HBox.hgrow="ALWAYS">
                     <font>
                         <Font name="Segoe UI Light" size="24.0" />
                     </font>
@@ -103,56 +106,111 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints maxHeight="458.0" minHeight="0.0" prefHeight="54.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="278.0" minHeight="0.0" prefHeight="59.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="386.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="278.0" minHeight="10.0" prefHeight="140.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="433.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <GridPane GridPane.rowIndex="1">
                             <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="232.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="156.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="470.0" minWidth="10.0" prefWidth="187.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="247.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="377.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="200.0" prefWidth="161.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="130.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.0" minWidth="10.0" prefWidth="273.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="580.0" minWidth="10.0" prefWidth="133.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="580.0" minWidth="10.0" prefWidth="423.0" />
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Hyperlink id="emuScenario" GridPane.columnIndex="3">
+                                <Hyperlink id="saveLink" text="+ Save Link" GridPane.columnIndex="3">
                                     <font>
                                         <Font name="Segoe UI Light" size="18.0" />
                                     </font>
                                 </Hyperlink>
-                                    <Label text="Evaluation of " GridPane.halignment="RIGHT">
+                                <ComboBox id="consumerBox" prefWidth="150.0" promptText="Consumer" />
+                                <ComboBox id="producerBox" prefWidth="150.0" promptText="Producer" GridPane.columnIndex="2" />
+                                <Hyperlink id="saveLinkAndNew" text="+ Save Link and New" GridPane.columnIndex="4">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Hyperlink>
+                                <Label id="pcLink" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="69.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                            </children>
+                        </GridPane>
+                        <GridPane GridPane.rowIndex="2">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="554.0" minWidth="10.0" prefWidth="283.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="963.0" minWidth="10.0" prefWidth="342.0" />
+                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="963.0" minWidth="10.0" prefWidth="493.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="42.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="58.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="276.0" minHeight="0.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="344.0" minHeight="10.0" prefHeight="253.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Request size" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="14.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                </Label>
+                                <Label text="Producer processing time" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="14.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets left="5.0" />
+                                    </GridPane.margin>
+                                </Label>
+                                <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Number of requests/s" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="14.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets left="5.0" />
+                                    </GridPane.margin>
+                                </Label>
+                                <TextField id="processingTime" text="60" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                <TextField id="requestSize" text="100" GridPane.columnIndex="1" GridPane.valignment="CENTER" />
+                                <TextField id="frequency" text="10" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                                <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.valignment="BOTTOM">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Hyperlink>
+                                <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Hyperlink>
+                                <Hyperlink prefHeight="34.0" prefWidth="42.0" styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                </Hyperlink>
+                                    <Label text="Response size" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
                                        <font>
-                                          <Font name="Segoe UI Light" size="18.0" />
+                                          <Font name="Segoe UI Light" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Hyperlink id="emuEsb" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                                       <font>
-                                          <Font name="Segoe UI Light" size="18.0" />
-                                       </font>
-                                    </Hyperlink>
-                                    <Label text="for the scenario" GridPane.columnIndex="2">
-                                       <font>
-                                          <Font name="Segoe UI Light" size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Hyperlink id="emuStart" GridPane.columnIndex="4" />
+                                    <TextField id="responseSize" text="500" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
                             </children>
                         </GridPane>
                               <Label id="notify" GridPane.halignment="CENTER">
                                  <font>
                                     <Font name="Segoe UI Light" size="14.0" />
-                                 </font>
-                              </Label>
-                              <BorderPane id="emuBorderPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                              <Label id="emuStatus" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
-                                 <font>
-                                    <Font name="Segoe UI Light" size="24.0" />
                                  </font>
                               </Label>
                     </children>
@@ -161,14 +219,15 @@
         </HBox>
     </children>
 </VBox>
-
-         
-    
+                   
+                   
+               </children>
+            </VBox>
          </children>
       </HBox>
       <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
          <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="11.0" fx:id="x31" />
                </font>
@@ -177,7 +236,7 @@
                </textFill>
             </Label>
             <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-            <Label font="$x31" maxWidth="-1.0" text="Right status" textFill="$x41" HBox.hgrow="NEVER" />
+            <Label font="$x31" maxWidth="-1.0" textFill="$x41" HBox.hgrow="NEVER" />
          </children>
          <padding>
             <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />

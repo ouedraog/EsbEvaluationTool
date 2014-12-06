@@ -6,6 +6,8 @@
 package org.insa.main;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,7 +30,6 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/org/insa/view/Main.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        System.err.println(new ComboBox<Void>().getStyleClass());
         stage.show();
     }
 
@@ -37,6 +38,9 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+
     }
+
+    
 
 }

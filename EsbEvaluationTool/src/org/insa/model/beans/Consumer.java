@@ -48,6 +48,9 @@ public class Consumer {
 
     @Override
     public boolean equals(Object o) {
+        if(o==null || ! (o instanceof Consumer)){
+            return false;
+        }
         Consumer other = (Consumer)o;
         return this.name.equals(other.getName()) && this.location.equals(other.getLocation());
     }

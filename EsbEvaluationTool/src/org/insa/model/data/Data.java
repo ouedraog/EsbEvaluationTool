@@ -23,11 +23,14 @@ import org.insa.model.parser.XmlParser;
 public class Data {
    private final   ArrayList<Producer> producers;
    private final   ArrayList<Consumer> consumers;
-   private  final int defaultProcessingTime = 50;
+   private  final int defaultProcessingTime = 500;
    private  final int defaultRequestSize = 100;
    private  final int defaultResponseSize = 200;
    private  final int defaultRequestFreq = 2;
    private final  ArrayList<String>esbList;
+   
+   private final int numberOfTasks = 10;
+   
     public Data() {
         producers = new ArrayList<>();
         consumers = new ArrayList<>();
@@ -50,10 +53,12 @@ public class Data {
         s.setName("Processing Time Scenario");
         Consumer c =  getConsumers().get(0);
         Producer p = getProducers().get(0);
-        Task l = new Task(p, c, defaultRequestSize, defaultResponseSize, defaultRequestFreq, processingTime);
+
         s.addConsumer(c);
         s.addProducer(p);
-        s.addTask(l);
+        for(int i=0; i<numberOfTasks; i++){
+            s.addTask(new Task(p, c, defaultRequestSize, defaultResponseSize, defaultRequestFreq, processingTime*i));
+        }
         return s;
     }
     public  Scenario dataSizeScenario(int requestSize, int responseTime){
@@ -61,10 +66,11 @@ public class Data {
         s.setName("Data Size Scenario");
         Consumer c =  getConsumers().get(0);
         Producer p = getProducers().get(0);
-        Task l = new Task(p, c, requestSize, responseTime, defaultRequestFreq, defaultProcessingTime);
         s.addConsumer(c);
         s.addProducer(p);
-        s.addTask(l);
+        for(int i=0; i<numberOfTasks; i++){
+            s.addTask(new Task(p, c, requestSize*i, responseTime*i, defaultRequestFreq, defaultProcessingTime));
+        }
         return s;
     }
     public  Scenario requestFrequencyScenario(int requestFrequency){
@@ -72,10 +78,11 @@ public class Data {
         s.setName("Request Frequency Scenario");
         Consumer c =  getConsumers().get(0);
         Producer p = getProducers().get(0);
-        Task l = new Task(p, c, defaultRequestSize, defaultResponseSize, requestFrequency, defaultProcessingTime);
         s.addConsumer(c);
         s.addProducer(p);
-        s.addTask(l);
+        for(int i=0; i<numberOfTasks; i++){
+            s.addTask(new Task(p, c, defaultRequestSize, defaultResponseSize, requestFrequency*i, defaultProcessingTime));
+        }
         return s;
     }
     public  ArrayList<Consumer> getConsumers() {

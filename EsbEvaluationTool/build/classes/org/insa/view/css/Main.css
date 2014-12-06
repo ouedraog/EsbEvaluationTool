@@ -39,9 +39,7 @@
     -fx-text-fill:#00A89C;
     -fx-font-size:24;
 }
-.label, .hyperlink{
-    -fx-font: Segoe UI Light;
-}
+
 #saveLinkAndNew, #createScenario{
     -fx-background-color: #00A89C;
     -fx-text-fill: white;
@@ -76,8 +74,67 @@
 }
 
 .help{
-    -fx-graphic: url("../img/info.png");
+    -fx-text-fill:red;
+    -fx-font-size:15pt;
 }
 #emuProgress{
    -fx-margin : 0 50 0 0 ;
+}
+
+.root, .label{
+    -fx-font: 13pt  "Segoe UI Light";
+}
+.stats-assump{
+    -fx-border-color: #F8F8F8 ;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 0 0;
+    -fx-background-color: #F8F8F8 ;
+    -fx-text-fill: white;
+}
+
+.assump-scenario{
+    -fx-background-color: #E8E8E8 ;
+}
+.stats{
+    -fx-background-image: url("../img/bg-light.png"); 
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1 1 0 0;
+    -fx-text-fill: whitesmoke;
+}
+.assump-title{
+   -fx-background-color:#F0F0F0;
+}
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0, 0 0 1 0;
+ /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; /* overriden as 5 2 0 0 */
+}
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #828282;
+    -fx-font: 14pt  "Segoe UI Light";
+    -fx-font-weight: bold;
+    -fx-padding: 0 100 0 0;
+}
+.tab-pane .tab{
+    -fx-background-color: #F0F0F0;
+}
+.tab-pane .tab:selected
+{
+    -fx-background-image: url("../img/bg-light.png");
+    -fx-text-fill:#00A89C;
+}
+.tab-pane *.tab-header-background 
+{
+    -fx-background-color: #F0F0F0;
+
+}
+
+#inputSensitivity, #outputSensitivity, #chartType, #kpiBox{
+    -fx-min-height:40;
+}
+.kpi-title{
+    -fx-font-size: 15pt;
+    -fx-text-fill: #00A89C; 
+    -fx-font-weight:bold;
 }

@@ -7,7 +7,7 @@ package org.insa.model.parser;
 
 import java.io.File;
 import org.insa.model.Model;
-import org.insa.model.Result;
+import org.insa.model.beans.KPI;
 import org.insa.model.Scenario;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;

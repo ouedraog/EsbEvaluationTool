@@ -15,6 +15,7 @@ import org.simpleframework.xml.ElementList;
  * @author JusteAbel
  */
 public class Scenario {
+
     @Attribute
     private String name;
     /**
@@ -36,9 +37,9 @@ public class Scenario {
     private ArrayList<Task> tasks;
 
     public Scenario() {
-        this.consumers = new ArrayList<Consumer>();
-        this.producers = new ArrayList<Producer>();
-        this.tasks = new ArrayList<Task>();
+        this.consumers = new ArrayList<>();
+        this.producers = new ArrayList<>();
+        this.tasks = new ArrayList<>();
         this.name = "Scenario";
     }
 
@@ -99,8 +100,7 @@ public class Scenario {
     public String toString() {
         return getName();
     }
-    
-    
+
     public String printScenario() {
         String str = "Scenario\n\tproducers = " + producers;
         str += "\n\tconsumers = " + consumers;
@@ -118,6 +118,61 @@ public class Scenario {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    /* --------------- The result ------------------*/
+    public int getNumberOfLoss() {
+        return 1;
+    }
+
+    public int getNumberOfNonLoss() {
+        return 10;
+    }
+
+    public int getNumberOfTask() {
+        return tasks.size();
+    }
+
+    public double getMeanRequestTime() {
+        double mean = 0;
+        mean = tasks.stream().map((t) -> t.getResult().getRequestTimeDist().getAverage()).reduce(mean, (accumulator, _item) -> accumulator + _item);
+        mean /= getNumberOfTask();
+        return mean;
+    }
+
+    public double getStdevRequestTime() {
+        double mean = 0;
+        mean = tasks.stream().map((t) -> t.getResult().getRequestTimeDist().getStdev()).reduce(mean, (accumulator, _item) -> accumulator + _item);
+        mean /= getNumberOfTask();
+        return mean;
+    }
+
+    public double getMeanResponseTime() {
+        double mean = 0;
+        mean = tasks.stream().map((t) -> t.getResult().getResponseTimeDist().getAverage()).reduce(mean, (accumulator, _item) -> accumulator + _item);
+        mean /= getNumberOfTask();
+        return mean;
+    }
+
+    public double getStdevResponseTime() {
+        double mean = 0;
+        mean = tasks.stream().map((t) -> t.getResult().getResponseTimeDist().getStdev()).reduce(mean, (accumulator, _item) -> accumulator + _item);
+        mean /= getNumberOfTask();
+        return mean;
+    }
+
+    public double getMeanRTT() {
+        double mean = 0;
+        mean = tasks.stream().map((t) -> t.getResult().getRttDist().getAverage()).reduce(mean, (accumulator, _item) -> accumulator + _item);
+        mean /= getNumberOfTask();
+        return mean;
+    }
+
+    public double getStdevRTT() {
+        double mean = 0;
+        mean = tasks.stream().map((t) -> t.getResult().getRttDist().getStdev()).reduce(mean, (accumulator, _item) -> accumulator + _item);
+        mean /= getNumberOfTask();
+        return mean;
     }
     
 }

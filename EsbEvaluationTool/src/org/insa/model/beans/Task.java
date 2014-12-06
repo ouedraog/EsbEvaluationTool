@@ -5,7 +5,6 @@
  */
 package org.insa.model.beans;
 
-import org.insa.model.Result;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
@@ -56,9 +55,10 @@ public class Task {
     /**
      * The KPI for this link
      */
-    private Result result;
+    private KPI result;
     
     public Task() {
+        this.result = new KPI();
     }
 
     public Task(Producer producer, Consumer consumer, int requestSize, int responseSize, int requestFrequency,
@@ -69,6 +69,7 @@ public class Task {
         this.responseSize = responseSize;
         this.requestFrequency = requestFrequency;
         this.processingTime = processingTime;
+        this.result = new KPI();
     }
 
     public Producer getProducer() {
@@ -93,11 +94,11 @@ public class Task {
 
    
 
-    public Result getResult() {
+    public KPI getResult() {
         return result;
     }
 
-    public void setResult(Result result) {
+    public void setResult(KPI result) {
         this.result = result;
     }
 

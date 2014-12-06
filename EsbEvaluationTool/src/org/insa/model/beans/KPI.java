@@ -1,92 +1,75 @@
 package org.insa.model.beans;
 
-import org.apache.commons.math3.stat.StatUtils;
-import org.simpleframework.xml.Attribute;
+import org.insa.model.beans.Distribution;
+import org.simpleframework.xml.Element;
 
 /**
- * Class Distribution
+ * Class Result
  * @author Yahya Albaba, Deepali Jain, Marc Orfila, Juste Abel Ouedraogo, Vansh Pahwa
  */
 public class KPI {
-    /**
-     * the minimum
-     */
-    @Attribute
-    private double min;
 
     /**
-     * The maximum
+     * The distribution of the response time
      */
-    @Attribute
-    private double max;
+     @Element
+     private Distribution responseTimeDist;
+     
+     /**
+      * The distribution of the request time
+      */
+     @Element
+     private Distribution requestTimeDist;
+     
+     /**
+      * The RTT
+      */
+     @Element
+     private Distribution rttDist;
 
-    /**
-     * The mean
-     */
-    @Attribute
-    private double average;
-
-    /**
-     * The standard deviation
-     */
-    @Attribute
-    private double stdev;
+     /**
+      * The distribution of the bus reliability
+      */
+     @Element
+    private Distribution busReliabilityDist;
 
     public KPI() {
     }
 
-    public KPI(double min, double max, double average, double stdev) {
-        this.min = min;
-        this.max = max;
-        this.average = average;
-        this.stdev = stdev;
+    public Distribution getLossDist() {
+        return busReliabilityDist;
     }
 
-    public double getAverage() {
-        return average;
+
+
+
+    public Distribution getResponseTimeDist() {
+        return responseTimeDist;
     }
 
-    public void setAverage(double average) {
-        this.average = average;
+    public void setLossDist(Distribution busReliabilityDist) {
+        this.busReliabilityDist = busReliabilityDist;
     }
 
-    public double getMax() {
-        return max;
+
+    public void setResponseTimeDist(Distribution responseTimeDist) {
+        this.responseTimeDist = responseTimeDist;
     }
 
-    public void setMax(double max) {
-        this.max = max;
+    public Distribution getRequestTimeDist() {
+        return requestTimeDist;
     }
 
-    public double getMin() {
-        return min;
+    public void setRequestTimeDist(Distribution requestTimeDist) {
+        this.requestTimeDist = requestTimeDist;
     }
 
-    public void setMin(double min) {
-        this.min = min;
+    public Distribution getRttDist() {
+        return rttDist;
     }
 
-    public double getStdev() {
-        return stdev;
+    public void setRttDist(Distribution rttDist) {
+        this.rttDist = rttDist;
     }
-
-    public void setStdev(double stdev) {
-        this.stdev = stdev;
-    }
-    /**
-     * compute the distribution
-     * @param data the data
-     */
-    public void computeDist(double data[]){
-        min = StatUtils.min(data);
-        max = StatUtils.max(data);
-        average = StatUtils.mean(data);
-        stdev = Math.sqrt(StatUtils.variance(data));
-    }
-
-    @Override
-    public String toString() {
-        return "min = "+min+", max="+max+", average="+average+", stdev="+stdev;
-    }
-
+    
 }
