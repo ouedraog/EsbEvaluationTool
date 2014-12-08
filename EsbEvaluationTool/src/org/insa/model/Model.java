@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.insa.model.beans.Consumer;
 import org.insa.model.beans.Task;
+import org.insa.tasks.ConsumerTask;
 import org.simpleframework.xml.Element;
 /**
  * Class Model
@@ -44,10 +45,10 @@ public class Model {
      * @param c
      * @return 
      */
-    public ArrayList<Task> getConsumerTask(Consumer c){
-        ArrayList<Task> result = new ArrayList<>();
+    public ArrayList<ConsumerTask> getConsumerTasks(Consumer c){
+        ArrayList<ConsumerTask> result = new ArrayList<>();
         scenario.getTasks().stream().filter((t) -> (t.getConsumer().equals(c))).forEach((t) -> {
-            result.add(t);
+            result.add(t.toConsumerTask());
         });
         return result;
     }

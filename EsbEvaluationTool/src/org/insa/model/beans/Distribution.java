@@ -1,6 +1,7 @@
 package org.insa.model.beans;
 
 import org.apache.commons.math3.stat.StatUtils;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.simpleframework.xml.Attribute;
 
 /**
@@ -41,7 +42,13 @@ public class Distribution {
         this.average = average;
         this.stdev = stdev;
     }
-
+    
+    public Distribution(DescriptiveStatistics stats){
+        this.min = stats.getMin();
+        this.max = stats.getMax();
+        this.average = stats.getMean();
+        this.stdev = stats.getStandardDeviation();
+    }
     public double getAverage() {
         return average;
     }

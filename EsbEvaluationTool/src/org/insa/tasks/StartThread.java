@@ -5,6 +5,7 @@
  */
 package org.insa.tasks;
 
+import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.concurrent.Service;
@@ -26,7 +27,11 @@ public class StartThread extends Thread {
 
     @Override
     public void run() {
-        result = sendStartScenario(consumer);
+        try {
+            result = sendStartScenario(consumer);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(StartThread.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void setResult(boolean result) {
@@ -38,13 +43,13 @@ public class StartThread extends Thread {
     }
 
 
-    private boolean sendStartScenario(Consumer c) {
-        try {
-            //TODO : call the startScenario service from the consumer service
-            Thread.sleep(30000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(StartThread.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private boolean sendStartScenario(Consumer c) throws MalformedURLException {
+        startScenario(c);
         return true;
+    }
+        private static boolean startScenario(Consumer c) throws MalformedURLException {
+        org.insa.tasks.ConsumerWSService service = new org.insa.tasks.ConsumerWSService(c.getURL(), Consumer.getQname());
+        org.insa.tasks.ConsumerWS port = service.getConsumerWSPort();
+        return port.startScenario();
     }
 }

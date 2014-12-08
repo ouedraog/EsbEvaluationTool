@@ -5,6 +5,7 @@
  */
 package org.insa.model.beans;
 
+import org.insa.tasks.ConsumerTask;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
@@ -148,5 +149,13 @@ public class Task {
         this.processingTime = processingTime;
     }
     
-
+    public ConsumerTask toConsumerTask(){
+        ConsumerTask t = new ConsumerTask();
+        t.setCsrequestSize(requestSize);
+        t.setProcessingTime(processingTime);
+        t.setPrrequestSize(responseSize);
+        t.setFrequency(requestFrequency);
+        t.setTotalTime(duration);
+        return t;
+    }
 }

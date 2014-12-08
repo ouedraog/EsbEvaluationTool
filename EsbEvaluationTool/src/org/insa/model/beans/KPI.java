@@ -1,6 +1,7 @@
 package org.insa.model.beans;
 
 import org.insa.model.beans.Distribution;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
 /**
@@ -26,31 +27,20 @@ public class KPI {
       */
      @Element
      private Distribution rttDist;
-
-     /**
-      * The distribution of the bus reliability
-      */
-     @Element
-    private Distribution busReliabilityDist;
+     
+     @Attribute
+     private int numberOfLoss;
+     
+     @Attribute
+     private int numberOfNonLoss;
 
     public KPI() {
     }
-
-    public Distribution getLossDist() {
-        return busReliabilityDist;
-    }
-
-
 
 
     public Distribution getResponseTimeDist() {
         return responseTimeDist;
     }
-
-    public void setLossDist(Distribution busReliabilityDist) {
-        this.busReliabilityDist = busReliabilityDist;
-    }
-
 
     public void setResponseTimeDist(Distribution responseTimeDist) {
         this.responseTimeDist = responseTimeDist;
@@ -71,5 +61,23 @@ public class KPI {
     public void setRttDist(Distribution rttDist) {
         this.rttDist = rttDist;
     }
+
+    public int getNumberOfLoss() {
+        return numberOfLoss;
+    }
+
+    public void setNumberOfLoss(int numberOfLoss) {
+        this.numberOfLoss = numberOfLoss;
+    }
+
+    public void setNumberOfNonLoss(int numberOfNonLoss) {
+        this.numberOfNonLoss = numberOfNonLoss;
+    }
+
+    public int getNumberOfNonLoss() {
+        return numberOfNonLoss;
+    }
+
+ 
     
 }

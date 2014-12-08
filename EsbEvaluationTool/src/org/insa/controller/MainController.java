@@ -11,7 +11,6 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,17 +27,13 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
@@ -303,7 +298,7 @@ public class MainController implements Initializable {
         emuEsb.setText(model.getSelectedEsb());
 
         Scenario scenario = model.getScenario();
-        System.out.println(scenario.getName());
+        //System.out.println(scenario.getName());
 
         emuScenario.setText(model.getScenario().getName());
     }
@@ -318,9 +313,9 @@ public class MainController implements Initializable {
 
         //display stats
         resultScenario.setText(model.getScenario().getName());
-        producerCount.setText(format(model.getScenario().getProducers().size()));
-        consumerCount.setText(format(model.getScenario().getConsumers().size()));
-        taskCount.setText(format(model.getScenario().getTasks().size()));
+        producerCount.setText(model.getScenario().getProducers().size()+"");
+        consumerCount.setText(model.getScenario().getConsumers().size()+"");
+        taskCount.setText(model.getScenario().getTasks().size()+"");
         avgReqTime.setText(format(model.getScenario().getMeanRequestTime()));
         stdevReqTime.setText(format(model.getScenario().getStdevRequestTime()));
         avgRespTime.setText(format(model.getScenario().getMeanResponseTime()));
@@ -450,7 +445,7 @@ public class MainController implements Initializable {
             if (addTask(consumerBox, producerBox)) {
                 showScenarioPage();
                 notify(labelScenario, "Task added successfuly", "success");
-                System.out.println(model.getScenario().printScenario());
+                //System.out.println(model.getScenario().printScenario());
             } else {
                 notify(labelScenario, "And error occured when adding the task", "error");
             };
@@ -583,7 +578,8 @@ public class MainController implements Initializable {
             kpi.setRequestTimeDist(new Distribution(0, 2, 1 + Math.random() * 20, 2));
             kpi.setResponseTimeDist(new Distribution(0, 2, 1 + Math.random() * 20, 2));
             kpi.setRttDist(new Distribution(0, 2, 1 + Math.random() * 20, 2));
-            kpi.setLossDist(new Distribution(0, 2, 1 + Math.random() * 20, 2));
+            kpi.setNumberOfLoss(1);
+            kpi.setNumberOfNonLoss(10);
         });
     }
 
@@ -647,7 +643,7 @@ public class MainController implements Initializable {
             requestsSerie.getData().add(new XYChart.Data<>(i + "", t.getResult().getRequestTimeDist().getAverage()));
             responseSerie.getData().add(new XYChart.Data<>(i + "", t.getResult().getResponseTimeDist().getAverage()));
             rttSerie.getData().add(new XYChart.Data<>(i + "", t.getResult().getRttDist().getAverage()));
-            lossSerie.getData().add(new XYChart.Data<>(i + "", t.getResult().getLossDist().getAverage()));
+            lossSerie.getData().add(new XYChart.Data<>(i + "", t.getResult().getNumberOfLoss()));
             i++;
         }
         list.add(requestsSerie);
@@ -683,7 +679,7 @@ public class MainController implements Initializable {
                     requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().getAverage()));
                     responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().getAverage()));
                     rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().getAverage()));
-                    lossSerie.getData().add(new XYChart.Data(size, t.getResult().getLossDist().getAverage()));
+                    lossSerie.getData().add(new XYChart.Data(size, t.getResult().getNumberOfLoss()));
                 });
                 break;
 
@@ -694,7 +690,7 @@ public class MainController implements Initializable {
                     requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().getAverage()));
                     responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().getAverage()));
                     rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().getAverage()));
-                    lossSerie.getData().add(new XYChart.Data(size, t.getResult().getLossDist().getAverage()));
+                    lossSerie.getData().add(new XYChart.Data(size, t.getResult().getNumberOfLoss()));
                 });
                 break;
             //Request frequency
@@ -704,7 +700,7 @@ public class MainController implements Initializable {
                     requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().getAverage()));
                     responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().getAverage()));
                     rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().getAverage()));
-                    lossSerie.getData().add(new XYChart.Data(size, t.getResult().getLossDist().getAverage()));
+                    lossSerie.getData().add(new XYChart.Data(size, t.getResult().getNumberOfLoss()));
                 });
                 break;
             //Processing time
@@ -714,7 +710,7 @@ public class MainController implements Initializable {
                     requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().getAverage()));
                     responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().getAverage()));
                     rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().getAverage()));
-                    lossSerie.getData().add(new XYChart.Data(size, t.getResult().getLossDist().getAverage()));
+                    lossSerie.getData().add(new XYChart.Data(size, t.getResult().getNumberOfLoss()));
                 });
                 break;
         }
