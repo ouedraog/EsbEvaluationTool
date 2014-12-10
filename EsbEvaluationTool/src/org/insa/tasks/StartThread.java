@@ -29,7 +29,10 @@ public class StartThread extends Thread {
     public void run() {
         try {
             result = sendStartScenario(consumer);
+            System.out.println(result+"; "+Thread.currentThread());
         } catch (MalformedURLException ex) {
+            Logger.getLogger(StartThread.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException_Exception ex) {
             Logger.getLogger(StartThread.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -43,11 +46,11 @@ public class StartThread extends Thread {
     }
 
 
-    private boolean sendStartScenario(Consumer c) throws MalformedURLException {
+    private boolean sendStartScenario(Consumer c) throws MalformedURLException, InterruptedException_Exception {
         startScenario(c);
         return true;
     }
-        private static boolean startScenario(Consumer c) throws MalformedURLException {
+        private static boolean startScenario(Consumer c) throws MalformedURLException, InterruptedException_Exception {
         org.insa.tasks.ConsumerWSService service = new org.insa.tasks.ConsumerWSService(c.getURL(), Consumer.getQname());
         org.insa.tasks.ConsumerWS port = service.getConsumerWSPort();
         return port.startScenario();

@@ -37,6 +37,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
+import org.controlsfx.dialog.Dialogs;
 import org.insa.model.Model;
 import org.insa.model.Scenario;
 import org.insa.model.beans.Consumer;
@@ -109,6 +110,7 @@ public class MainController implements Initializable {
     private TextField responseSize;
     private TextField processingTime;
     private TextField frequency;
+    private TextField duration;
 
     private Hyperlink emuEsb;
     private Hyperlink emuScenario;
@@ -187,6 +189,7 @@ public class MainController implements Initializable {
             responseSize = (TextField) createScenarioPage.lookup("#responseSize");
             processingTime = (TextField) createScenarioPage.lookup("#processingTime");
             frequency = (TextField) createScenarioPage.lookup("#frequency");
+            duration = (TextField) createScenarioPage.lookup("#duration");
 
             emuEsb = (Hyperlink) emulationPage.lookup("#emuEsb");
             emuScenario = (Hyperlink) emulationPage.lookup("#emuScenario");
@@ -248,8 +251,8 @@ public class MainController implements Initializable {
 
         predifinedScenario.setAll(
                 data.dataSizeScenario(500, 600),
-                data.processingTimeScenario(600),
-                data.requestFrequencyScenario(20));
+                data.processingTimeScenario(100),
+                data.requestFrequencyScenario(100));
         producers.setAll(data.getProducers());
         consumers.setAll(data.getConsumers());
         model.getScenario().setConsumers(data.getConsumers());
@@ -307,15 +310,15 @@ public class MainController implements Initializable {
      * Show the result page
      */
     private void showResultPage() {
-        getDummyResults();
-        
+        //getDummyResults();
+
         contentBox.getChildren().setAll(resultPage);
 
         //display stats
         resultScenario.setText(model.getScenario().getName());
-        producerCount.setText(model.getScenario().getProducers().size()+"");
-        consumerCount.setText(model.getScenario().getConsumers().size()+"");
-        taskCount.setText(model.getScenario().getTasks().size()+"");
+        producerCount.setText(model.getScenario().getProducers().size() + "");
+        consumerCount.setText(model.getScenario().getConsumers().size() + "");
+        taskCount.setText(model.getScenario().getTasks().size() + "");
         avgReqTime.setText(format(model.getScenario().getMeanRequestTime()));
         stdevReqTime.setText(format(model.getScenario().getStdevRequestTime()));
         avgRespTime.setText(format(model.getScenario().getMeanResponseTime()));
@@ -495,7 +498,9 @@ public class MainController implements Initializable {
         Task p = new Task(producerBox.getSelectionModel().getSelectedItem(),
                 consumerBox.getSelectionModel().getSelectedItem(),
                 Integer.parseInt(requestSize.getText()), Integer.parseInt(responseSize.getText()),
-                Integer.parseInt(frequency.getText()), Integer.parseInt(processingTime.getText()));
+                Integer.parseInt(frequency.getText()), Integer.parseInt(processingTime.getText()),
+                Integer.parseInt(duration.getText())
+        );
         model.getScenario().addTask(p);
         return errorMsg == null;
     }
@@ -512,8 +517,12 @@ public class MainController implements Initializable {
                 service = new ScenarioService(model);
                 service.start();
 
+                emuStatus.textProperty().bind(service.messageProperty());
+
                 service.setOnSucceeded(e -> {
+                    model = service.getModel();
                     progress.setVisible(false);
+                    emuStatus.textProperty().unbind();
                     notify(emuStatus, "Scenario has been completed successfully! "
                             + "Go to the result section to view the results", "success");
                     Notifications.create().text("Scenario has been completed successfully!\n"
@@ -522,9 +531,12 @@ public class MainController implements Initializable {
 
                 service.setOnFailed(e -> {
                     progress.setVisible(false);
+                    emuStatus.textProperty().unbind();
                     notify(emuStatus, "Failed to run the scenario! ", "error");
                     Notifications.create().text("Failed to run the scenario! ").title("Emulation").showError();
                     System.err.println(service.getException());
+                    Dialogs.create().title("Smulation").masthead("Failed to run the scenario").showException(service.getException());
+
                 });
 
             }
@@ -578,8 +590,8 @@ public class MainController implements Initializable {
             kpi.setRequestTimeDist(new Distribution(0, 2, 1 + Math.random() * 20, 2));
             kpi.setResponseTimeDist(new Distribution(0, 2, 1 + Math.random() * 20, 2));
             kpi.setRttDist(new Distribution(0, 2, 1 + Math.random() * 20, 2));
-            kpi.setNumberOfLoss(1);
-            kpi.setNumberOfNonLoss(10);
+            kpi.setNumberOfLoss((int) (Math.random() * 10));
+            kpi.setNumberOfNonLoss((int) (Math.random() * 20));
         });
     }
 
@@ -669,7 +681,6 @@ public class MainController implements Initializable {
         XYChart.Series<Number, Number> lossSerie = new XYChart.Series<>();
         lossSerie.setName("Losses");
 
-        //getDummyResults();
         //Average     
         switch (input) {
             //Request size

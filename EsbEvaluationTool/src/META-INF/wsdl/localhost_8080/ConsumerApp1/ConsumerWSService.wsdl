@@ -4,12 +4,6 @@
 <xsd:import namespace="http://service/" schemaLocation="http://localhost:8080/ConsumerApp1/ConsumerWSService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="retrieveResults">
-<part name="parameters" element="tns:retrieveResults"/>
-</message>
-<message name="retrieveResultsResponse">
-<part name="parameters" element="tns:retrieveResultsResponse"/>
-</message>
 <message name="setScenario">
 <part name="parameters" element="tns:setScenario"/>
 </message>
@@ -22,11 +16,16 @@
 <message name="startScenarioResponse">
 <part name="parameters" element="tns:startScenarioResponse"/>
 </message>
+<message name="InterruptedException">
+<part name="fault" element="tns:InterruptedException"/>
+</message>
+<message name="retrieveResults">
+<part name="parameters" element="tns:retrieveResults"/>
+</message>
+<message name="retrieveResultsResponse">
+<part name="parameters" element="tns:retrieveResultsResponse"/>
+</message>
 <portType name="ConsumerWS">
-<operation name="retrieveResults">
-<input wsam:Action="http://service/ConsumerWS/retrieveResultsRequest" message="tns:retrieveResults"/>
-<output wsam:Action="http://service/ConsumerWS/retrieveResultsResponse" message="tns:retrieveResultsResponse"/>
-</operation>
 <operation name="setScenario">
 <input wsam:Action="http://service/ConsumerWS/setScenarioRequest" message="tns:setScenario"/>
 <output wsam:Action="http://service/ConsumerWS/setScenarioResponse" message="tns:setScenarioResponse"/>
@@ -34,19 +33,15 @@
 <operation name="startScenario">
 <input wsam:Action="http://service/ConsumerWS/startScenarioRequest" message="tns:startScenario"/>
 <output wsam:Action="http://service/ConsumerWS/startScenarioResponse" message="tns:startScenarioResponse"/>
+<fault message="tns:InterruptedException" name="InterruptedException" wsam:Action="http://service/ConsumerWS/startScenario/Fault/InterruptedException"/>
+</operation>
+<operation name="retrieveResults">
+<input wsam:Action="http://service/ConsumerWS/retrieveResultsRequest" message="tns:retrieveResults"/>
+<output wsam:Action="http://service/ConsumerWS/retrieveResultsResponse" message="tns:retrieveResultsResponse"/>
 </operation>
 </portType>
 <binding name="ConsumerWSPortBinding" type="tns:ConsumerWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="retrieveResults">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="setScenario">
 <soap:operation soapAction=""/>
 <input>
@@ -57,6 +52,18 @@
 </output>
 </operation>
 <operation name="startScenario">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="InterruptedException">
+<soap:fault name="InterruptedException" use="literal"/>
+</fault>
+</operation>
+<operation name="retrieveResults">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

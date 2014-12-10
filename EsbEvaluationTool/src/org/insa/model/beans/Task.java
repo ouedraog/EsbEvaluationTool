@@ -63,13 +63,14 @@ public class Task {
     }
 
     public Task(Producer producer, Consumer consumer, int requestSize, int responseSize, int requestFrequency,
-            int processingTime) {
+            int processingTime, int duration) {
         this.producer = producer;
         this.consumer = consumer;
         this.requestSize = requestSize;
         this.responseSize = responseSize;
         this.requestFrequency = requestFrequency;
         this.processingTime = processingTime;
+        this.duration = duration;
         this.result = new KPI();
     }
 
@@ -151,11 +152,12 @@ public class Task {
     
     public ConsumerTask toConsumerTask(){
         ConsumerTask t = new ConsumerTask();
-        t.setCsrequestSize(requestSize);
+        t.setRequestSize(requestSize);
         t.setProcessingTime(processingTime);
-        t.setPrrequestSize(responseSize);
-        t.setFrequency(requestFrequency);
-        t.setTotalTime(duration);
+        t.setResponseSize(responseSize);
+        t.setPeriod(requestFrequency);
+        t.setDuration(duration);
+        t.setProducerWsdl(producer.getLocation());
         return t;
     }
 }

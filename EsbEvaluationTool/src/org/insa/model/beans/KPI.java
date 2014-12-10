@@ -35,6 +35,9 @@ public class KPI {
      private int numberOfNonLoss;
 
     public KPI() {
+        requestTimeDist = new Distribution();
+        responseTimeDist = new Distribution();
+        rttDist = new Distribution();
     }
 
 

@@ -33,7 +33,9 @@ public class Service {
         responseData = produceDate(dataSize);
         endTime = System.currentTimeMillis();
         //send the response
-        return "("+startTime+","+endTime+")"+responseData;
+        String response = "("+startTime+","+endTime+")"+responseData;
+        //System.out.println("response = "+response);
+        return response;
     }
 
     private void waitFor(int timems) {
