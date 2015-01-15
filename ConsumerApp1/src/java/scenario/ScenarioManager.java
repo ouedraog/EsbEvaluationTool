@@ -39,7 +39,7 @@ public class ScenarioManager {
     /**
      * The timeout in minutes
      */
-    private final int TIMEOUT = 30;
+    private final int MAX_RTT = 30;
 
     public ScenarioManager() {
         this.tasks = new ArrayList<>();
@@ -91,7 +91,7 @@ public class ScenarioManager {
         //Wait and stop the message senders after a given duration (timeout)
         for(FutureTask<MessageResult> msgSender : msgSenderList){
             try {
-                MessageResult msgResult = msgSender.get(TIMEOUT, TimeUnit.MINUTES);
+                MessageResult msgResult = msgSender.get(MAX_RTT+task.getProcessingTime(), TimeUnit.MINUTES);
                 taskResult.getTimeToSend().add(msgResult.getRequestTime());
                 taskResult.getTimeToReceive().add(msgResult.getResponseTime());
                 
