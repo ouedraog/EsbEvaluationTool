@@ -35,8 +35,6 @@ public class Scenario {
      */
     @ElementList
     private ArrayList<Task> tasks;
-    
-    
 
     public Scenario() {
         this.consumers = new ArrayList<>();
@@ -130,7 +128,7 @@ public class Scenario {
     }
 
     public int getNumberOfNonLoss() {
-                int nb = 0;
+        int nb = 0;
         nb = tasks.stream().map((t) -> t.getResult().getNumberOfNonLoss()).reduce(nb, Integer::sum);
         return nb;
     }
@@ -180,5 +178,5 @@ public class Scenario {
         mean /= getNumberOfTask();
         return mean;
     }
-    
+
 }

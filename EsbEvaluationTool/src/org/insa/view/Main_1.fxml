@@ -11,247 +11,332 @@
 <?import javafx.scene.text.*?>
 
 <VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.insa.controller.MainController">
-  <children>
-      <HBox id="topWrapper" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #686868;" VBox.vgrow="NEVER">
-         <children>
-            <GridPane HBox.hgrow="ALWAYS">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="635.0" minWidth="10.0" prefWidth="297.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="983.0" minWidth="10.0" prefWidth="983.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="Esb Evaluation Tool" textFill="WHITE" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-                     <font>
-                        <Font name="Segoe UI Light" size="24.0" />
-                     </font>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <ToolBar id="toolbar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1">
-                    <items>
-                        <Hyperlink id="exitLink" fx:id="exitLink" textFill="WHITE">
-                           <font>
-                              <Font name="Segoe UI Light" size="14.0" />
-                           </font>
-                        </Hyperlink>
-                    </items>
-                  </ToolBar>
-               </children>
-            </GridPane>
-         </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-         <children>
-            <VBox id="sidebarLeft" prefHeight="678.0" prefWidth="162.0" style="-fx-background-color: #F0F0F0;">
-               <children>
-                  <GridPane prefHeight="678.0" prefWidth="152.0" VBox.vgrow="ALWAYS">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="244.0" minHeight="0.0" prefHeight="68.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="550.0" minHeight="2.0" prefHeight="70.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="606.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="606.0" minHeight="10.0" prefHeight="473.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Hyperlink fx:id="esbLink" style="-fx-text-fill: black;" styleClass="menu" text="ESB" GridPane.valignment="TOP">
-                           <font>
-                              <Font name="Segoe UI Light" size="18.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="scenarioLink" style="-fx-text-fill: black;" styleClass="menu" text="Scenario" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font name="Segoe UI Light" size="18.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="emulationLink" style="-fx-text-fill: black;" styleClass="menu" text="Emulation" GridPane.rowIndex="2" GridPane.valignment="TOP">
-                           <font>
-                              <Font name="Segoe UI Light" size="18.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="resultsLink" style="-fx-text-fill: black;" styleClass="menu" text="Results" GridPane.rowIndex="3" GridPane.valignment="TOP">
-                           <font>
-                              <Font name="Segoe UI Light" size="18.0" />
-                           </font>
-                        </Hyperlink>
-                     </children>
-                  </GridPane>
-               </children>
-            </VBox>
-            <VBox fx:id="contentBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-               <children>
-                  
-
-
-<VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox id="navigation" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="nav" VBox.vgrow="NEVER">
-            <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" text="Scenario creation" HBox.hgrow="ALWAYS">
-                    <font>
-                        <Font name="Segoe UI Light" size="24.0" />
-                    </font>
-                </Label>
-            </children>
-        </HBox>
-        <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <HBox id="topWrapper" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #686868;" VBox.vgrow="NEVER">
             <children>
                 <GridPane HBox.hgrow="ALWAYS">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="635.0" minWidth="10.0" prefWidth="297.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="983.0" minWidth="10.0" prefWidth="983.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="278.0" minHeight="10.0" prefHeight="140.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="433.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <GridPane GridPane.rowIndex="1">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="200.0" prefWidth="161.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="130.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.0" minWidth="10.0" prefWidth="273.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="580.0" minWidth="10.0" prefWidth="133.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="580.0" minWidth="10.0" prefWidth="423.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                                <Hyperlink id="saveLink" text="+ Save Link" GridPane.columnIndex="3">
-                                    <font>
-                                        <Font name="Segoe UI Light" size="18.0" />
-                                    </font>
-                                </Hyperlink>
-                                <ComboBox id="consumerBox" prefWidth="150.0" promptText="Consumer" />
-                                <ComboBox id="producerBox" prefWidth="150.0" promptText="Producer" GridPane.columnIndex="2" />
-                                <Hyperlink id="saveLinkAndNew" text="+ Save Link and New" GridPane.columnIndex="4">
-                                    <font>
-                                        <Font name="Segoe UI Light" size="18.0" />
-                                    </font>
-                                </Hyperlink>
-                                <Label id="pcLink" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="69.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                            </children>
-                        </GridPane>
-                        <GridPane GridPane.rowIndex="2">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="554.0" minWidth="10.0" prefWidth="283.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="963.0" minWidth="10.0" prefWidth="342.0" />
-                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="963.0" minWidth="10.0" prefWidth="493.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="42.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="58.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="276.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="276.0" minHeight="0.0" prefHeight="58.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="344.0" minHeight="10.0" prefHeight="253.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                                <Label text="Request size" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                        <Label text="Esb Evaluation Tool" textFill="WHITE" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                            <font>
+                                <Font name="Segoe UI Light" size="24.0" />
+                            </font>
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </Label>
+                        <ToolBar id="toolbar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1">
+                            <items>
+                                <Hyperlink id="exitLink" fx:id="exitLink" textFill="WHITE">
                                     <font>
                                         <Font name="Segoe UI Light" size="14.0" />
                                     </font>
-                                    <padding>
-                                        <Insets left="5.0" />
-                                    </padding>
-                                </Label>
-                                <Label text="Period" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                                    <font>
-                                        <Font name="Segoe UI Light" size="14.0" />
-                                    </font>
-                                    <GridPane.margin>
-                                        <Insets left="5.0" />
-                                    </GridPane.margin>
-                                </Label>
-                                <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Number of requests/s" GridPane.rowIndex="4" GridPane.valignment="TOP">
-                                    <font>
-                                        <Font name="Segoe UI Light" size="14.0" />
-                                    </font>
-                                    <GridPane.margin>
-                                        <Insets left="5.0" />
-                                    </GridPane.margin>
-                                </Label>
-                                <TextField id="processingTime" text="60" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                                <TextField id="requestSize" text="100" GridPane.columnIndex="1" GridPane.valignment="CENTER" />
-                                <TextField id="frequency" text="10" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                                <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.valignment="BOTTOM">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
                                 </Hyperlink>
-                                <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Hyperlink>
-                                <Hyperlink prefHeight="34.0" prefWidth="42.0" styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="TOP">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                       <GridPane.margin>
-                                          <Insets />
-                                       </GridPane.margin>
-                                </Hyperlink>
-                                    <Label text="Response size" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <padding>
-                                          <Insets left="5.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="Segoe UI Light" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField id="responseSize" text="500" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                                          <Label text="Duration" GridPane.rowIndex="2">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" />
-                                             </GridPane.margin>
-                                          </Label>
-                                          <TextField id="duration" text="6000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                            </children>
-                        </GridPane>
-                              <Label id="notify" GridPane.halignment="CENTER">
-                                 <font>
-                                    <Font name="Segoe UI Light" size="14.0" />
-                                 </font>
-                              </Label>
+                            </items>
+                        </ToolBar>
                     </children>
                 </GridPane>
             </children>
         </HBox>
-    </children>
-</VBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <children>
+                <VBox id="sidebarLeft" prefHeight="678.0" prefWidth="162.0" style="-fx-background-color: #F0F0F0;">
+                    <children>
+                        <GridPane prefHeight="678.0" prefWidth="152.0" VBox.vgrow="ALWAYS">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="244.0" minHeight="0.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="550.0" minHeight="2.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="606.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="606.0" minHeight="10.0" prefHeight="473.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Hyperlink fx:id="esbLink" style="-fx-text-fill: black;" styleClass="menu" text="ESB" GridPane.valignment="TOP">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Hyperlink>
+                                <Hyperlink fx:id="scenarioLink" style="-fx-text-fill: black;" styleClass="menu" text="Scenario" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Hyperlink>
+                                <Hyperlink fx:id="emulationLink" style="-fx-text-fill: black;" styleClass="menu" text="Emulation" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Hyperlink>
+                                <Hyperlink fx:id="resultsLink" style="-fx-text-fill: black;" styleClass="menu" text="Results" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Hyperlink>
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+                <VBox fx:id="contentBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                    <children>
+                  
+
+
+                        <VBox id="result" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <HBox id="navigation" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="nav" VBox.vgrow="NEVER">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" text="Results" HBox.hgrow="ALWAYS">
+                                            <font>
+                                                <Font name="Segoe UI Light" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <TabPane id="tabPane" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+                                            <tabs>
+                                                <Tab id="summary" text="Summary">
+                                                    <content>
+                                                        <GridPane HBox.hgrow="ALWAYS">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints maxHeight="458.0" minHeight="0.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints maxHeight="278.0" minHeight="0.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="386.0" vgrow="SOMETIMES" />
+                                                            </rowConstraints>
+                                                            <children>
+                                                                <Label id="notify" GridPane.halignment="CENTER">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Light" size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Label id="emuStatus" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Light" size="24.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <HBox alignment="CENTER_LEFT" styleClass="assump-title">
+                                                                    <children>
+                                                                        <Label contentDisplay="CENTER" styleClass="kpi-title" text="The Key Performance Indicators">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </HBox>
+                                                                <GridPane styleClass="stats" GridPane.rowIndex="1">
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="549.0" minWidth="10.0" prefWidth="167.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="951.0" minWidth="10.0" prefWidth="951.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <Label text="Scenario" />
+                                                                        <Label id="resultScenario" text="Data size scenario" GridPane.columnIndex="1" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <GridPane GridPane.rowIndex="2">
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <GridPane styleClass="stats">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="181.0" minWidth="10.0" prefWidth="165.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="282.0" minWidth="10.0" prefWidth="208.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label text="Producers" />
+                                                                                <Label id="producerCount" text="2" GridPane.columnIndex="1" />
+                                                                            </children>
+                                                                        </GridPane>
+                                                                        <GridPane styleClass="stats" GridPane.columnIndex="1">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Consumers" />
+                                                                                <Label id="consumerCount" text="2" GridPane.columnIndex="1" />
+                                                                            </children>
+                                                                        </GridPane>
+                                                                        <GridPane styleClass="stats" GridPane.columnIndex="2">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label text="Tasks" />
+                                                                                <Label id="taskCount" text="10" GridPane.columnIndex="1" />
+                                                                            </children>
+                                                                        </GridPane>
+                                                                    </children>
+                                                                </GridPane>
+                                                                <GridPane GridPane.rowIndex="3">
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="552.0" minWidth="10.0" prefWidth="483.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="779.0" minWidth="10.0" prefWidth="635.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <GridPane>
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="stats">
+                                                                                    <top>
+                                                                                        <Label text="Average Request time" BorderPane.alignment="CENTER" />
+                                                                                    </top>
+                                                                                    <center>
+                                                                                        <Label id="avgReqTime" text="2" BorderPane.alignment="CENTER" />
+                                                                                    </center>
+                                                                                </BorderPane>
+                                                                                <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="stats" GridPane.columnIndex="1">
+                                                                                    <center>
+                                                                                        <Label id="stdevReqTime" text="2" BorderPane.alignment="CENTER" />
+                                                                                    </center>
+                                                                                    <top>
+                                                                                        <Label text="Stdev Request time" BorderPane.alignment="CENTER" />
+                                                                                    </top>
+                                                                                </BorderPane>
+                                                                                <BorderPane layoutX="252.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="stats" GridPane.rowIndex="1">
+                                                                                    <center>
+                                                                                        <Label id="avgRespTime" text="2" BorderPane.alignment="CENTER" />
+                                                                                    </center>
+                                                                                    <top>
+                                                                                        <Label text="Average Response time" BorderPane.alignment="CENTER" />
+                                                                                    </top>
+                                                                                </BorderPane>
+                                                                                <BorderPane layoutX="10.0" layoutY="136.0" prefHeight="200.0" prefWidth="200.0" styleClass="stats" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                                    <center>
+                                                                                        <Label id="stdevRespTime" text="2" BorderPane.alignment="CENTER" />
+                                                                                    </center>
+                                                                                    <top>
+                                                                                        <Label text="Stdev Response time" BorderPane.alignment="CENTER" />
+                                                                                    </top>
+                                                                                </BorderPane>
+                                                                                <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="stats" GridPane.rowIndex="2">
+                                                                                    <center>
+                                                                                        <Label id="avgRTT" text="2" BorderPane.alignment="CENTER" />
+                                                                                    </center>
+                                                                                    <top>
+                                                                                        <Label text="Average RTT" BorderPane.alignment="CENTER" />
+                                                                                    </top>
+                                                                                </BorderPane>
+                                                                                <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="stats" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                                                    <center>
+                                                                                        <Label id="stdevRTT" text="2" BorderPane.alignment="CENTER" />
+                                                                                    </center>
+                                                                                    <top>
+                                                                                        <Label text="Stdev RTT" BorderPane.alignment="CENTER" />
+                                                                                    </top>
+                                                                                </BorderPane>
+                                                                            </children>
+                                                                        </GridPane>
+                                                                        <BorderPane id="chartZone" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                                                            <top>
+                                                                                <HBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
+                                                                                    <children>
+                                                                                        <ComboBox id="chartType" prefHeight="25.0" prefWidth="306.0" styleClass="stats" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS" />
+                                                                                        <ComboBox id="kpiBox" prefHeight="25.0" prefWidth="268.0" styleClass="stats" HBox.hgrow="SOMETIMES" />
+                                                                                    </children>
+                                                                                </HBox>
+                                                                            </top>
+                                                                        </BorderPane>
+                                                                    </children>
+                                                                </GridPane>
+                                                            </children>
+                                                        </GridPane>
+                                                    </content>
+                                                </Tab>
+                                                <Tab id="sensitivity" text="Sensitivity">
+                                                    <content>
+                                                        <BorderPane id="sensitivityZone" prefHeight="200.0" prefWidth="200.0">
+                                                            <top>
+                                                                <HBox spacing="30.0">
+                                                                    <children>
+                                                                        <Label text="Input" />
+                                                                        <ComboBox id="inputSensitivity" prefHeight="25.0" prefWidth="275.0" styleClass="stats" GridPane.columnIndex="1" />
+                                                                        <Label text="Output" />
+                                                                        <ComboBox id="outputSensitivity" prefHeight="25.0" prefWidth="289.0" styleClass="stats" GridPane.columnIndex="1" />
+                                                                        <Label text="Stats" />
+                                                                        <ComboBox id="statsType" prefHeight="40.0" prefWidth="252.0" styleClass="stats" />
+                                                                    </children>
+                                                                </HBox>
+                                                            </top>
+                                                            <center>
+      
+                                                            </center>
+                                                        </BorderPane>
+                                                    </content>
+                                                </Tab>
+                                            </tabs>
+                                        </TabPane>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
                 
                    
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font size="11.0" fx:id="x31" />
-               </font>
-               <textFill>
-                  <Color blue="0.625" green="0.625" red="0.625" fx:id="x41" />
-               </textFill>
-            </Label>
-            <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-            <Label font="$x31" maxWidth="-1.0" textFill="$x41" HBox.hgrow="NEVER" />
-         </children>
-         <padding>
-            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-         </padding>
-      </HBox>
-  </children>
-  <stylesheets>
-    <URL value="@css/Main.css" />
-  </stylesheets>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+            <children>
+                <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="11.0" fx:id="x31" />
+                    </font>
+                    <textFill>
+                        <Color blue="0.625" green="0.625" red="0.625" fx:id="x41" />
+                    </textFill>
+                </Label>
+                <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+                <Label font="$x31" maxWidth="-1.0" textFill="$x41" HBox.hgrow="NEVER" />
+            </children>
+            <padding>
+                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+            </padding>
+        </HBox>
+    </children>
+    <stylesheets>
+        <URL value="@css/Main.css" />
+    </stylesheets>
 </VBox>

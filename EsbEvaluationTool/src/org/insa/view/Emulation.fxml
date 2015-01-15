@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
       
- <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" >
+<VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" >
     <children>
         <HBox id="navigation" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="nav" VBox.vgrow="NEVER">
             <children>
@@ -30,7 +30,7 @@
                     <rowConstraints>
                         <RowConstraints maxHeight="458.0" minHeight="0.0" prefHeight="54.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="278.0" minHeight="0.0" prefHeight="59.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="386.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
@@ -40,7 +40,7 @@
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="156.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="470.0" minWidth="10.0" prefWidth="187.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="247.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="377.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="377.0" />
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -51,35 +51,35 @@
                                         <Font name="Segoe UI Light" size="18.0" />
                                     </font>
                                 </Hyperlink>
-                                    <Label text="Evaluation of " GridPane.halignment="RIGHT">
-                                       <font>
-                                          <Font name="Segoe UI Light" size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Hyperlink id="emuEsb" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                                       <font>
-                                          <Font name="Segoe UI Light" size="18.0" />
-                                       </font>
-                                    </Hyperlink>
-                                    <Label text="for the scenario" GridPane.columnIndex="2">
-                                       <font>
-                                          <Font name="Segoe UI Light" size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Hyperlink id="emuStart" GridPane.columnIndex="4" />
+                                <Label text="Evaluation of " GridPane.halignment="RIGHT">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Hyperlink id="emuEsb" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Hyperlink>
+                                <Label text="for the scenario" GridPane.columnIndex="2">
+                                    <font>
+                                        <Font name="Segoe UI Light" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Hyperlink id="emuStart" GridPane.columnIndex="4" />
                             </children>
                         </GridPane>
-                              <Label id="notify" GridPane.halignment="CENTER">
-                                 <font>
-                                    <Font name="Segoe UI Light" size="14.0" />
-                                 </font>
-                              </Label>
-                              <BorderPane id="emuBorderPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                              <Label id="emuStatus" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
-                                 <font>
-                                    <Font name="Segoe UI Light" size="24.0" />
-                                 </font>
-                              </Label>
+                        <Label id="notify" GridPane.halignment="CENTER">
+                            <font>
+                                <Font name="Segoe UI Light" size="14.0" />
+                            </font>
+                        </Label>
+                        <BorderPane id="emuBorderPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                        <Label id="emuStatus" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                            <font>
+                                <Font name="Segoe UI Light" size="24.0" />
+                            </font>
+                        </Label>
                     </children>
                 </GridPane>
             </children>

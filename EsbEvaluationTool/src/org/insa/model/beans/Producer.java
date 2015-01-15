@@ -25,10 +25,13 @@ public class Producer {
     public void setLocation(String location) {
         this.location = location;
     }
-    
+
     public Producer(String name, String location) {
         this.name = name;
         this.location = location;
+    }
+
+    public Producer() {
     }
 
     public String getName() {

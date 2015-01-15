@@ -19,22 +19,17 @@ public class Service {
      */
     @WebMethod(operationName = "operation")
     public String operation(String request, int dataSize, int processingTime) {
-        //the data to return
-        String responseData = null;
         //the producer first timestamp (request reception time)
-        long startTime;
-        //the producer last timestamp (response sent time)
-        long endTime;
-
-        startTime = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
+        System.out.println("request received at " + startTime + " : response size = " + dataSize + ", processing time = " + processingTime);
         //wait for the processing time
         waitFor(processingTime);
         //produce the data
-        responseData = produceDate(dataSize);
-        endTime = System.currentTimeMillis();
+        String responseData = produceMessage(dataSize);
+        //the producer last timestamp (response sent time)
+        long endTime = System.currentTimeMillis();
         //send the response
-        String response = "("+startTime+","+endTime+")"+responseData;
-        //System.out.println("response = "+response);
+        String response = "(" + startTime + "," + endTime + ")" + responseData;
         return response;
     }
 
@@ -45,12 +40,11 @@ public class Service {
         }
     }
 
-    private String produceDate(int size){
+    private String produceMessage(int size) {
         String data = "";
-        for(int i=0; i<size; i++){
-            data+="a";
+        for (int i = 0; i < size; i++) {
+            data += "a";
         }
         return data;
     }
 }
-

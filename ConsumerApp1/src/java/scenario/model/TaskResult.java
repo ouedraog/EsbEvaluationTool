@@ -1,4 +1,4 @@
-package task;
+package scenario.model;
 
 import java.util.ArrayList;
 
@@ -36,5 +36,12 @@ public class TaskResult {
     public void setTimeToSend(ArrayList<Long> timeToSend) {
         this.timeToSend = timeToSend;
     }
+
+    @Override
+    public String toString() {
+        String str = "Request times "+timeToSend+"\nRespone times = "+timeToReceive+"\n\n";
+        return str;
+    }
+    
 
 }

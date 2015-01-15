@@ -26,7 +26,7 @@
 
 }
 .add{
-       -fx-graphic:url("../img/add.png"); 
+    -fx-graphic:url("../img/add.png"); 
 }
 #loadScenario{
     //-fx-background-color: #0077A3;
@@ -78,7 +78,7 @@
     -fx-font-size:15pt;
 }
 #emuProgress{
-   -fx-margin : 0 50 0 0 ;
+    -fx-margin : 0 50 0 0 ;
 }
 
 .root, .label{
@@ -102,11 +102,11 @@
     -fx-text-fill: whitesmoke;
 }
 .assump-title{
-   -fx-background-color:#F0F0F0;
+    -fx-background-color:#F0F0F0;
 }
 .tab-pane:top *.tab-header-area {
     -fx-background-insets: 0, 0 0 1 0;
- /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
+    /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
     -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; /* overriden as 5 2 0 0 */
 }
 .tab .tab-label { 
@@ -130,7 +130,7 @@
 
 }
 
-#inputSensitivity, #outputSensitivity, #chartType, #kpiBox{
+#inputSensitivity, #outputSensitivity, #chartType, #kpiBox, #statsType{
     -fx-min-height:40;
 }
 .kpi-title{

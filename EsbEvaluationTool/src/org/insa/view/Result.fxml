@@ -11,7 +11,8 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-                  <VBox id="result" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+      
+<VBox id="result" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
     <children>
         <HBox id="navigation" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="nav" VBox.vgrow="NEVER">
             <children>
@@ -51,7 +52,7 @@
                                         </Label>
                                         <HBox alignment="CENTER_LEFT" styleClass="assump-title">
                                             <children>
-                                                <Label styleClass="kpi-title" contentDisplay="CENTER" text="The Key Performance Indicators">
+                                                <Label contentDisplay="CENTER" styleClass="kpi-title" text="The Key Performance Indicators">
                                                     <font>
                                                         <Font size="14.0" />
                                                     </font>
@@ -192,15 +193,15 @@
                                                         </BorderPane>
                                                     </children>
                                                 </GridPane>
-                                                  <BorderPane id="chartZone" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                                   <top>
-                                                            <HBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
-                                                               <children>
-                                                            <ComboBox id="chartType"  prefHeight="25.0" prefWidth="306.0" styleClass="stats" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS" />
-                                                                  <ComboBox id="kpiBox"  prefHeight="25.0" prefWidth="268.0" styleClass="stats" HBox.hgrow="SOMETIMES" />
-                                                               </children>
-                                                            </HBox>
-                                                   </top>
+                                                <BorderPane id="chartZone" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                                    <top>
+                                                        <HBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
+                                                            <children>
+                                                                <ComboBox id="chartType" prefHeight="25.0" prefWidth="306.0" styleClass="stats" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS" />
+                                                                <ComboBox id="kpiBox" prefHeight="25.0" prefWidth="268.0" styleClass="stats" HBox.hgrow="SOMETIMES" />
+                                                            </children>
+                                                        </HBox>
+                                                    </top>
                                                 </BorderPane>
                                             </children>
                                         </GridPane>
@@ -212,43 +213,16 @@
                             <content>
                                 <BorderPane id="sensitivityZone" prefHeight="200.0" prefWidth="200.0">
                                     <top>
-                                        <GridPane BorderPane.alignment="CENTER">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
+                                        <HBox spacing="30.0">
                                             <children>
-                                                <GridPane>
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="155.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="404.0" minWidth="10.0" prefWidth="404.0" />
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label text="Input" />
-                                                        <ComboBox id="inputSensitivity"  prefHeight="25.0" prefWidth="275.0" styleClass="stats" GridPane.columnIndex="1" />
-                                                    </children>
-                                                </GridPane>
-                                                <GridPane GridPane.columnIndex="1">
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="196.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="407.0" minWidth="10.0" prefWidth="363.0" />
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label text="Output" />
-                                                        <ComboBox id="outputSensitivity"  prefHeight="25.0" prefWidth="289.0" styleClass="stats" GridPane.columnIndex="1" />
-                                                    </children>
-                                                </GridPane>
+                                                <Label text="Input" />
+                                                <ComboBox id="inputSensitivity" prefHeight="25.0" prefWidth="275.0" styleClass="stats" GridPane.columnIndex="1" />
+                                                <Label text="Output" />
+                                                <ComboBox id="outputSensitivity" prefHeight="25.0" prefWidth="289.0" styleClass="stats" GridPane.columnIndex="1" />
+                                                <Label text="Stats" />
+                                                <ComboBox id="statsType" prefHeight="40.0" prefWidth="252.0" styleClass="stats" />
                                             </children>
-                                        </GridPane>
+                                        </HBox>
                                     </top>
                                     <center>
       

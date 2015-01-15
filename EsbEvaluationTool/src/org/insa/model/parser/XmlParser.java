@@ -47,16 +47,15 @@ public class XmlParser {
     }
 
     /**
-     * Save the result in a file
-     * Save also the scenario which goes with
+     * Save the result in a file Save also the scenario which goes with
      */
-    public static void saveResult(Model model, File output) throws Exception{
+    public static void saveResult(Model model, File output) throws Exception {
         Strategy strategy = new CycleStrategy("id", "ref");
         Serializer serializer = new Persister(strategy);
         serializer.write(model, output);
     }
 
-     /**
+    /**
      * Read a result file
      *
      * @param input the input file

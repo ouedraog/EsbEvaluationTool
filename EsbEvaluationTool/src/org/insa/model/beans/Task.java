@@ -29,7 +29,7 @@ public class Task {
      * The consumer request size
      */
     @Attribute
-    private int requestSize; 
+    private int requestSize;
     /**
      * Producer response size
      */
@@ -46,7 +46,7 @@ public class Task {
      */
     @Attribute
     private int processingTime;
-    
+
     /**
      * The duration of the task
      */
@@ -57,7 +57,7 @@ public class Task {
      * The KPI for this link
      */
     private KPI result;
-    
+
     public Task() {
         this.result = new KPI();
     }
@@ -94,8 +94,6 @@ public class Task {
         return processingTime;
     }
 
-   
-
     public KPI getResult() {
         return result;
     }
@@ -103,8 +101,6 @@ public class Task {
     public void setResult(KPI result) {
         this.result = result;
     }
-
-
 
     public int getRequestFrequency() {
         return requestFrequency;
@@ -129,8 +125,7 @@ public class Task {
     public void setResponseSize(int responseSize) {
         this.responseSize = responseSize;
     }
-    
-    
+
     @Override
     public String toString() {
         return "Link( producer = " + producer + ", consumer = " + consumer
@@ -149,8 +144,8 @@ public class Task {
     public void setProcessingTime(int processingTime) {
         this.processingTime = processingTime;
     }
-    
-    public ConsumerTask toConsumerTask(){
+
+    public ConsumerTask toConsumerTask() {
         ConsumerTask t = new ConsumerTask();
         t.setRequestSize(requestSize);
         t.setProcessingTime(processingTime);

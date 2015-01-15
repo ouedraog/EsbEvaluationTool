@@ -68,8 +68,8 @@
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints maxHeight="170.0" minHeight="0.0" prefHeight="42.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="58.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="276.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="58.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="276.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="276.0" minHeight="0.0" prefHeight="58.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="344.0" minHeight="10.0" prefHeight="253.0" vgrow="SOMETIMES" />
                             </rowConstraints>
@@ -115,34 +115,34 @@
                                     <font>
                                         <Font size="14.0" />
                                     </font>
-                                       <GridPane.margin>
-                                          <Insets />
-                                       </GridPane.margin>
+                                    <GridPane.margin>
+                                        <Insets />
+                                    </GridPane.margin>
                                 </Hyperlink>
-                                    <Label text="Response size" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                       <padding>
-                                          <Insets left="5.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="Segoe UI Light" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField id="responseSize" text="500" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                                          <Label text="Duration" GridPane.rowIndex="2">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" />
-                                             </GridPane.margin>
-                                          </Label>
-                                          <TextField id="duration" text="6000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                <Label text="Response size" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                    <font>
+                                        <Font name="Segoe UI Light" size="14.0" />
+                                    </font>
+                                </Label>
+                                <TextField id="responseSize" text="500" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                                <Label text="Duration" GridPane.rowIndex="2">
+                                    <GridPane.margin>
+                                        <Insets left="5.0" />
+                                    </GridPane.margin>
+                                </Label>
+                                <TextField id="duration" text="6000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Hyperlink styleClass="help" text="*" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                             </children>
                         </GridPane>
-                              <Label id="notify" GridPane.halignment="CENTER">
-                                 <font>
-                                    <Font name="Segoe UI Light" size="14.0" />
-                                 </font>
-                              </Label>
+                        <Label id="notify" GridPane.halignment="CENTER">
+                            <font>
+                                <Font name="Segoe UI Light" size="14.0" />
+                            </font>
+                        </Label>
                     </children>
                 </GridPane>
             </children>

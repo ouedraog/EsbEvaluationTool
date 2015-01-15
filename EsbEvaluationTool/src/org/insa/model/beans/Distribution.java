@@ -6,9 +6,12 @@ import org.simpleframework.xml.Attribute;
 
 /**
  * Class Distribution
- * @author Yahya Albaba, Deepali Jain, Marc Orfila, Juste Abel Ouedraogo, Vansh Pahwa
+ *
+ * @author Yahya Albaba, Deepali Jain, Marc Orfila, Juste Abel Ouedraogo, Vansh
+ * Pahwa
  */
 public class Distribution {
+
     /**
      * the minimum
      */
@@ -42,13 +45,16 @@ public class Distribution {
         this.average = average;
         this.stdev = stdev;
     }
-    
-    public Distribution(DescriptiveStatistics stats){
-        this.min = stats.getMin();
-        this.max = stats.getMax();
-        this.average = stats.getMean();
-        this.stdev = stats.getStandardDeviation();
+
+    public Distribution(DescriptiveStatistics stats) {
+        if (stats.getValues().length != 0) {
+            this.min = stats.getMin();
+            this.max = stats.getMax();
+            this.average = stats.getMean();
+            this.stdev = stats.getStandardDeviation();
+        }
     }
+
     public double getAverage() {
         return average;
     }
@@ -80,11 +86,13 @@ public class Distribution {
     public void setStdev(double stdev) {
         this.stdev = stdev;
     }
+
     /**
      * compute the distribution
+     *
      * @param data the data
      */
-    public void computeDist(double data[]){
+    public void computeDist(double data[]) {
         min = StatUtils.min(data);
         max = StatUtils.max(data);
         average = StatUtils.mean(data);
@@ -93,7 +101,26 @@ public class Distribution {
 
     @Override
     public String toString() {
-        return "min = "+min+", max="+max+", average="+average+", stdev="+stdev;
+        return "min = " + min + ", max=" + max + ", average=" + average + ", stdev=" + stdev;
+    }
+
+    public double get(int type) {
+        double res = 0;
+        switch (type) {
+            case 0:
+                res = average;
+                break;
+            case 1:
+                res = min;
+                break;
+            case 2:
+                res = max;
+                break;
+            case 3:
+                res = stdev;
+                break;
+        }
+        return res;
     }
 
 }

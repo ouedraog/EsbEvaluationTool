@@ -1,25 +1,29 @@
 package org.insa.model;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.insa.model.beans.Consumer;
 import org.insa.model.beans.Task;
 import org.insa.tasks.ConsumerTask;
 import org.simpleframework.xml.Element;
+
 /**
  * Class Model
- * @author Yahya Albaba, Deepali Jain, Marc Orfila, Juste Abel Ouedraogo, Vansh Pahwa
+ *
+ * @author Yahya Albaba, Deepali Jain, Marc Orfila, Juste Abel Ouedraogo, Vansh
+ * Pahwa
  */
 public class Model {
-  
+
     /**
      * The scenario
      */
     @Element
     private Scenario scenario;
-    
+
     private String selectedEsb;
-    
-    public Model() {  
+
+    public Model() {
         scenario = new Scenario();
     }
 
@@ -30,22 +34,22 @@ public class Model {
     public void setSelectedEsb(String selectedEsb) {
         this.selectedEsb = selectedEsb;
     }
-    
 
     public Scenario getScenario() {
         return scenario;
     }
-    
+
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
     }
-    
+
     /**
      * Get a consumer tasks
+     *
      * @param c
-     * @return 
+     * @return
      */
-    public ArrayList<ConsumerTask> getConsumerTasks(Consumer c){
+    public ArrayList<ConsumerTask> getConsumerTasks(Consumer c) {
         ArrayList<ConsumerTask> result = new ArrayList<>();
         scenario.getTasks().stream().filter((t) -> (t.getConsumer().equals(c))).forEach((t) -> {
             result.add(t.toConsumerTask());

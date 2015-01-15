@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -47,7 +48,8 @@ import org.insa.model.beans.Task;
 import org.insa.model.beans.Producer;
 import org.insa.model.data.Data;
 import org.insa.model.parser.XmlParser;
-import org.insa.tasks.ScenarioService;
+import org.insa.emulation.EmulationService;
+import org.insa.emulation.EmulationTask;
 
 /**
  * FXML Controller class
@@ -99,6 +101,7 @@ public class MainController implements Initializable {
     private Hyperlink loadScenario;
     private ComboBox<Scenario> selectPredScenario;
     private Hyperlink createScenario;
+
     private Label labelScenario;
     private Hyperlink create;
     private Hyperlink createAndNew;
@@ -118,11 +121,12 @@ public class MainController implements Initializable {
     private Label emuStatus;
     private BorderPane emuBorderPane;
 
-    private ProgressIndicator progress;
+    private ProgressIndicator progressIndicator;
 
     /* ------------- result page ------------------*/
     private ComboBox<String> inputSensitivity;
     private ComboBox<String> outputSensitivity;
+    private ComboBox<String> statsType;
     private BorderPane sensitivityZone;
 
     private TabPane tabPane;
@@ -159,8 +163,9 @@ public class MainController implements Initializable {
     private ObservableList<String> inputs = FXCollections.observableArrayList();
     private ObservableList<String> outputs = FXCollections.observableArrayList();
     private ObservableList<String> chartTypeData = FXCollections.observableArrayList();
+    private ObservableList<String> statsTypeData = FXCollections.observableArrayList();
 
-    private ScenarioService service;
+    private EmulationService emulationService;
     private boolean isRunning = false;
 
     public MainController() {
@@ -197,10 +202,10 @@ public class MainController implements Initializable {
             emuStatus = (Label) emulationPage.lookup("#emuStatus");
             emuBorderPane = (BorderPane) emulationPage.lookup("#emuBorderPane");
 
-            progress = new ProgressIndicator();
-            progress.setMaxHeight(60);
-            progress.setMaxWidth(60);
-            progress.setId("emuProgress");
+            progressIndicator = new ProgressIndicator();
+            progressIndicator.setMaxHeight(60);
+            progressIndicator.setMaxWidth(60);
+            progressIndicator.setId("emuProgress");
 
             tabPane = (TabPane) resultPage.lookup("#tabPane");
 
@@ -228,6 +233,7 @@ public class MainController implements Initializable {
                         inputSensitivity = (ComboBox<String>) n.lookup("#inputSensitivity");
                         outputSensitivity = (ComboBox<String>) n.lookup("#outputSensitivity");
                         sensitivityZone = (BorderPane) n.lookup("#sensitivityZone");
+                        statsType = (ComboBox<String>) n.lookup("#statsType");
                         break;
                 }
             });
@@ -248,6 +254,7 @@ public class MainController implements Initializable {
         inputs.setAll("Request size", "Response size", "Request frequency", "Processing time");
         outputs.setAll("Request time", "Response time", "RTT", "Loss");
         chartTypeData.setAll("Repartition of the losses", "Results per task");
+        statsTypeData.setAll("Mean", "Min", "Max", "Stdev");
 
         predifinedScenario.setAll(
                 data.dataSizeScenario(500, 600),
@@ -450,7 +457,7 @@ public class MainController implements Initializable {
                 notify(labelScenario, "Task added successfuly", "success");
                 //System.out.println(model.getScenario().printScenario());
             } else {
-                notify(labelScenario, "And error occured when adding the task", "error");
+                notify(labelCreateScenario, "An error occured when adding the task", "error");
             };
 
         });
@@ -462,7 +469,7 @@ public class MainController implements Initializable {
             if (addTask(consumerBox, producerBox)) {
                 notify(labelCreateScenario, "Task added successfuly", "success");
             } else {
-                notify(labelCreateScenario, "And error occured when adding the task", "error");
+                notify(labelCreateScenario, "An error occured when adding the task", "error");
             };
         });
     }
@@ -510,32 +517,22 @@ public class MainController implements Initializable {
             isRunning = false; //TODO  change this later
             if (!isRunning) {
                 emuStatus.setText("Starting the scenario ...");
-                emuBorderPane.setCenter(progress);
+                emuBorderPane.setCenter(progressIndicator);
                 Notifications.create().text("Emulation has been started").title("Emulation").showInformation();
 
                 //start the scenario service
-                service = new ScenarioService(model);
-                service.start();
+                emulationService = new EmulationService(model);
+                emulationService.start();
+                
+                emuStatus.getStyleClass().clear();
+                emuStatus.textProperty().bind(emulationService.messageProperty());
 
-                emuStatus.textProperty().bind(service.messageProperty());
-
-                service.setOnSucceeded(e -> {
-                    model = service.getModel();
-                    progress.setVisible(false);
-                    emuStatus.textProperty().unbind();
-                    notify(emuStatus, "Scenario has been completed successfully! "
-                            + "Go to the result section to view the results", "success");
-                    Notifications.create().text("Scenario has been completed successfully!\n"
-                            + "Go to the result section to view the results").title("Emulation").showInformation();
+                emulationService.setOnSucceeded(e -> {
+                    onEmulationSucceded();
                 });
 
-                service.setOnFailed(e -> {
-                    progress.setVisible(false);
-                    emuStatus.textProperty().unbind();
-                    notify(emuStatus, "Failed to run the scenario! ", "error");
-                    Notifications.create().text("Failed to run the scenario! ").title("Emulation").showError();
-                    System.err.println(service.getException());
-                    Dialogs.create().title("Smulation").masthead("Failed to run the scenario").showException(service.getException());
+                emulationService.setOnFailed(e -> {
+                    onEmulationFailed();
 
                 });
 
@@ -550,6 +547,8 @@ public class MainController implements Initializable {
         inputSensitivity.getSelectionModel().select(0);
         outputSensitivity.getItems().setAll(outputs);
         outputSensitivity.getSelectionModel().select(0);
+        statsType.getItems().setAll(statsTypeData);
+        statsType.getSelectionModel().select(0);
 
         kpiBox.getItems().setAll(outputs);
         kpiBox.getSelectionModel().select(0);
@@ -566,6 +565,9 @@ public class MainController implements Initializable {
         });
 
         outputSensitivity.valueProperty().addListener(e -> {
+            drawSensitivityChart();
+        });
+        statsType.valueProperty().addListener(e -> {
             drawSensitivityChart();
         });
 
@@ -630,7 +632,9 @@ public class MainController implements Initializable {
 
         int input = inputSensitivity.getSelectionModel().getSelectedIndex();
         int output = outputSensitivity.getSelectionModel().getSelectedIndex();
-        sensitivityChart.getData().setAll(getSensitivitySeries(input).get(output));
+        int stats = statsType.getSelectionModel().getSelectedIndex();
+
+        sensitivityChart.getData().setAll(getSensitivitySeries(input, stats).get(output));
         sensitivityZone.setCenter(sensitivityChart);
 
     }
@@ -656,17 +660,18 @@ public class MainController implements Initializable {
             responseSerie.getData().add(new XYChart.Data<>(i + "", t.getResult().getResponseTimeDist().getAverage()));
             rttSerie.getData().add(new XYChart.Data<>(i + "", t.getResult().getRttDist().getAverage()));
             lossSerie.getData().add(new XYChart.Data<>(i + "", t.getResult().getNumberOfLoss()));
+            //System.err.println(t.getResult().getNumberOfLoss());
             i++;
         }
         list.add(requestsSerie);
         list.add(responseSerie);
         list.add(rttSerie);
         list.add(lossSerie);
-
+        
         return list;
     }
 
-    private ArrayList<XYChart.Series<Number, Number>> getSensitivitySeries(int input) {
+    private ArrayList<XYChart.Series<Number, Number>> getSensitivitySeries(int input, int stats) {
         ArrayList<XYChart.Series<Number, Number>> list = new ArrayList<>();
 
         XYChart.Series<Number, Number> requestsSerie = new XYChart.Series<>();
@@ -687,30 +692,31 @@ public class MainController implements Initializable {
             case 0:
                 model.getScenario().getTasks().stream().forEach((t) -> {
                     int size = t.getRequestSize();
-                    requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().getAverage()));
-                    responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().getAverage()));
-                    rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().getAverage()));
+                    requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().get(stats)));
+                    responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().get(stats)));
+                    rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().get(stats)));
                     lossSerie.getData().add(new XYChart.Data(size, t.getResult().getNumberOfLoss()));
                 });
                 break;
 
-            //Response time
+            //Response size
             case 1:
                 model.getScenario().getTasks().stream().forEach((t) -> {
                     int size = t.getResponseSize();
-                    requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().getAverage()));
-                    responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().getAverage()));
-                    rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().getAverage()));
+                    requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().get(stats)));
+                    responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().get(stats)));
+                    rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().get(stats)));
                     lossSerie.getData().add(new XYChart.Data(size, t.getResult().getNumberOfLoss()));
+                 
                 });
                 break;
             //Request frequency
             case 2:
                 model.getScenario().getTasks().stream().forEach((t) -> {
                     int size = t.getRequestFrequency();
-                    requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().getAverage()));
-                    responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().getAverage()));
-                    rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().getAverage()));
+                    requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().get(stats)));
+                    responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().get(stats)));
+                    rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().get(stats)));
                     lossSerie.getData().add(new XYChart.Data(size, t.getResult().getNumberOfLoss()));
                 });
                 break;
@@ -718,9 +724,9 @@ public class MainController implements Initializable {
             case 3:
                 model.getScenario().getTasks().stream().forEach((t) -> {
                     int size = t.getProcessingTime();
-                    requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().getAverage()));
-                    responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().getAverage()));
-                    rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().getAverage()));
+                    requestsSerie.getData().add(new XYChart.Data(size, t.getResult().getRequestTimeDist().get(stats)));
+                    responseSerie.getData().add(new XYChart.Data(size, t.getResult().getResponseTimeDist().get(stats)));
+                    rttSerie.getData().add(new XYChart.Data(size, t.getResult().getRttDist().get(stats)));
                     lossSerie.getData().add(new XYChart.Data(size, t.getResult().getNumberOfLoss()));
                 });
                 break;
@@ -734,8 +740,33 @@ public class MainController implements Initializable {
         return list;
     }
 
-    private String format(double nb) {
+    private String format(Double nb) {
         NumberFormat formatter = new DecimalFormat("#0.00");
-        return formatter.format(nb);
+        String str = formatter.format(nb);
+        if(nb.equals(Double.NaN)){
+            str = "--";
+        }
+        return str;
+    }
+
+    private void onEmulationSucceded() {
+        model = emulationService.getModel();
+        progressIndicator.setVisible(false);
+        emuStatus.textProperty().unbind();
+        notify(emuStatus, "Scenario has been completed successfully! "
+                + "Go to the result section to view the results", "success");
+        Notifications.create().text("Scenario has been completed successfully!\n"
+                + "Go to the result section to view the results").title("Emulation").showInformation();
+        isRunning = false;
+    }
+
+    private void onEmulationFailed() {
+        progressIndicator.setVisible(false);
+        emuStatus.textProperty().unbind();
+        notify(emuStatus, "Failed to run the scenario! ", "error");
+        Notifications.create().text("Failed to run the scenario! ").title("Emulation").showError();
+        System.err.println(emulationService.getException());
+        Dialogs.create().title("Smulation").masthead("Failed to run the scenario").showException(emulationService.getException());
+        isRunning = false;
     }
 }

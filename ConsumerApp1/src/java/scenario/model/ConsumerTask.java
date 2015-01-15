@@ -1,5 +1,4 @@
-package task;
-
+package scenario.model;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,31 +9,44 @@ package task;
  * @author vidhipahwa
  */
 public class ConsumerTask {
-
-    private int duration;//time in milliseconds
-    private int period;//time per request
+    /**
+     * total duration of the task in ms
+     */
+    private int duration;
+    /**
+     * The period in ms
+     */
+    private int period;
+    /**
+     * The wsdl location of the provider
+     */
     private String producerWsdl;
+    /**
+     * The provider processing time in ms
+     */
     private int processingTime;
-    private int requestSize; //requestsize in bytes
+    /**
+     * The request size in byte
+     */
+    private int requestSize; 
+    /**
+     * The response size in byte
+     */
     private int responseSize;
 
     public ConsumerTask() {
 
     }
-
-    private String composeMessage(int size) {
+    /**
+     * Produce the message to send
+     * @return 
+     */
+    public String produceMessage() {
         String x = "";
-        for (int i = 1; i < (size); i++) {
+        for (int i = 1; i < (requestSize); i++) {
             x = x + 'a';
         }
         return x;
-    }
-
-    public Message getMessage() {
-        Message msg = new Message();
-        msg.setMsg(composeMessage(requestSize));
-
-        return msg;
     }
 
     public int getDuration() {
@@ -84,6 +96,5 @@ public class ConsumerTask {
     public void setResponseSize(int responseSize) {
         this.responseSize = responseSize;
     }
-    
 
 }

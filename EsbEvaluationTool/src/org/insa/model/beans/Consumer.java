@@ -20,6 +20,7 @@ public class Consumer {
     private String name;
     @Attribute
     private String wsdlAdress;
+
     public Consumer() {
     }
 
@@ -36,7 +37,6 @@ public class Consumer {
         this.wsdlAdress = wsdlAdress;
     }
 
-    
     public void setName(String name) {
         this.name = name;
     }
@@ -52,18 +52,18 @@ public class Consumer {
 
     @Override
     public boolean equals(Object o) {
-        if(o==null || ! (o instanceof Consumer)){
+        if (o == null || !(o instanceof Consumer)) {
             return false;
         }
-        Consumer other = (Consumer)o;
+        Consumer other = (Consumer) o;
         return this.name.equals(other.getName()) && this.wsdlAdress.equals(other.getWsdlAdress());
     }
-    
-    public static QName getQname(){
+
+    public static QName getQname() {
         return new QName("http://service/", "ConsumerWSService");
     }
-    
-    public URL getURL() throws MalformedURLException{
+
+    public URL getURL() throws MalformedURLException {
         return new URL(wsdlAdress);
     }
 }

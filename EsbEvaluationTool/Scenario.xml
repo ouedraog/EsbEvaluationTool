@@ -1,22 +1,23 @@
 <scenario id="0" name="Scenario">
-   <producers id="1">
-      <producer id="2" name="Airport system" location="localhost/airsystem?wsdl"/>
-   </producers>
-   <consumers id="3">
-      <consumer id="4" name="Aircraft system" location="localhost/aircraft?wsdl"/>
-   </consumers>
-   <tasks id="5">
-      <task id="6" requestSize="50" responseSize="60" requestFrequency="1" processingTime="20" duration="0">
-         <producer ref="2"/>
-         <consumer ref="4"/>
-      </task>
-      <task id="7" requestSize="10" responseSize="200" requestFrequency="10" processingTime="20" duration="0">
-         <producer ref="2"/>
-         <consumer ref="4"/>
-      </task>
-      <task id="8" requestSize="20" responseSize="600" requestFrequency="10" processingTime="10" duration="0">
-         <producer ref="2"/>
-         <consumer ref="4"/>
-      </task>
-   </tasks>
+    <producers id="1">
+        <producer id="2" name="Provider 1" location="http://192.168.43.241:9080/BridgeProtocoleService1/esbProvider?WSDL"/>
+    </producers>
+    <consumers id="3">
+        <consumer id="4" name="Consumer 1" wsdlAdress="http://localhost:8080/ConsumerApp1/ConsumerWSService?WSDL"/>
+        <consumer id="5" name="Consumer 2" wsdlAdress="http://localhost:8080/ConsumerApp2/ConsumerWSService?WSDL"/>
+    </consumers>
+    <tasks id="6">
+        <task id="7" requestSize="50" responseSize="60" requestFrequency="1" processingTime="20" duration="1000">
+            <producer ref="2"/>
+            <consumer ref="4"/>
+        </task>
+        <task id="8" requestSize="10" responseSize="200" requestFrequency="10" processingTime="20" duration="1000">
+            <producer ref="2"/>
+            <consumer ref="4"/>
+        </task>
+        <task id="9" requestSize="20" responseSize="600" requestFrequency="10" processingTime="10" duration="1000">
+            <producer ref="2"/>
+            <consumer ref="5"/>
+        </task>
+    </tasks>
 </scenario>
