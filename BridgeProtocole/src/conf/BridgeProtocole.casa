@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<casa xmlns="http://java.sun.com/xml/ns/casa" xmlns:ns1="BridgeProtocole" xmlns:ns2="http://service/" xmlns:xlink="http://www.w3.org/2000/xlink">
+    <endpoints>
+        <endpoint endpoint-name="esbProvider" interface-name="ns2:Service" name="endpoint1" service-name="ns1:BridgeProtocoleService1"/>
+        <endpoint endpoint-name="ServicePort" interface-name="ns2:Service" name="endpoint2" service-name="ns2:ServiceService"/>
+    </endpoints>
+    <service-units>
+        <binding-component-service-unit artifacts-zip="sun-http-binding.jar" component-name="sun-http-binding" description="Represents this Service Unit" name="BridgeProtocole-sun-http-binding" unit-name="sun-http-binding">
+            <ports>
+                <port bindingType="soap" x="67" y="283">
+                    <link xlink:href="../jbiasa/192.168.43.223_8080/ProviderApp/ServiceService.wsdl#xpointer(/definitions/service[@name='ServiceService']/port[@name='ServicePort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint2"/>
+                    <provides endpoint="endpoint2"/>
+                </port>
+                <port bindingType="soap" x="67" y="115">
+                    <link xlink:href="../jbiasa/BridgeProtocole.wsdl#xpointer(/definitions/service[@name='BridgeProtocoleService1']/port[@name='esbProvider'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+    </service-units>
+    <connections>
+        <connection consumer="endpoint1" provider="endpoint2" state="new"/>
+    </connections>
+    <porttypes>
+        <link xlink:href="../jbiasa/192.168.43.223_8080/ProviderApp/ServiceService.wsdl#xpointer(/definitions/portType[@name='Service'])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/BridgeProtocole.wsdl#xpointer(/definitions/portType[@name='dummyCasaPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/192.168.43.223_8080/ProviderApp/ServiceService.wsdl#xpointer(/definitions/portType[@name='Service'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BridgeProtocole.wsdl#xpointer(/definitions/portType[@name='dummyCasaPortType'])" xlink:type="simple"/>
+    </porttypes>
+    <bindings>
+        <link xlink:href="../jbiasa/192.168.43.223_8080/ProviderApp/ServiceService.wsdl#xpointer(/definitions/binding[@name='ServicePortBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/BridgeProtocole.wsdl#xpointer(/definitions/binding[@name='casaBinding1'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/192.168.43.223_8080/ProviderApp/ServiceService.wsdl#xpointer(/definitions/binding[@name='ServicePortBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BridgeProtocole.wsdl#xpointer(/definitions/binding[@name='casaBinding1'])" xlink:type="simple"/>
+    </bindings>
+    <services>
+        <link xlink:href="../jbiasa/192.168.43.223_8080/ProviderApp/ServiceService.wsdl#xpointer(/definitions/service[@name='ServiceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/BridgeProtocole.wsdl#xpointer(/definitions/service[@name='BridgeProtocoleService1'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/192.168.43.223_8080/ProviderApp/ServiceService.wsdl#xpointer(/definitions/service[@name='ServiceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BridgeProtocole.wsdl#xpointer(/definitions/service[@name='BridgeProtocoleService1'])" xlink:type="simple"/>
+    </services>
+    <regions>
+        <region name="WSDL Endpoints" width="150"/>
+        <region name="JBI Modules" width="500"/>
+        <region name="External Modules" width="200"/>
+    </regions>
+</casa>

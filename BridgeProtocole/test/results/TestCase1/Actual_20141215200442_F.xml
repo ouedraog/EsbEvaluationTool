@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Body>
+    <ns2:operationResponse xmlns:ns2="http://service/">
+      <return>(1418670278032,1418670278036)aaaaa</return>
+    </ns2:operationResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

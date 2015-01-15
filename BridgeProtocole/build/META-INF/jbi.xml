@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns1="BridgeProtocole" xmlns:ns2="http://service/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/jbi ./jbi.xsd">
+    <service-assembly>
+        <identification>
+            <name>BridgeProtocole</name>
+            <description>Represents the Service Assembly of BridgeProtocole</description>
+        </identification>
+        <service-unit>
+            <identification>
+                <name>BridgeProtocole-sun-http-binding</name>
+                <description>Represents this Service Unit</description>
+            </identification>
+            <target>
+                <artifacts-zip>sun-http-binding.jar</artifacts-zip>
+                <component-name>sun-http-binding</component-name>
+            </target>
+        </service-unit>
+        <connections>
+            <connection>
+                <consumer endpoint-name="esbProvider" service-name="ns1:BridgeProtocoleService1"/>
+                <provider endpoint-name="ServicePort" service-name="ns2:ServiceService"/>
+            </connection>
+        </connections>
+    </service-assembly>
+</jbi>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://10.201.3.70:8080/ProviderApp/ServiceService?WSDL" uri="src/jbiasa/10.201.3.70_8080/ProviderApp/ServiceService.wsdl"/>
+    <system systemId="http://10.201.3.70:8080/ProviderApp/ServiceService?xsd=1" uri="src/jbiasa/10.201.3.70_8080/ProviderApp/ServiceService.xsd_1.xsd"/>
+    <nextCatalog catalog="nbproject/private/cache/retriever/catalog.xml"/>
+    <system systemId="http://192.168.43.223:8080/ConsumerApp1/ConsumerWSService?WSDL" uri="src/jbiasa/192.168.43.223_8080/ConsumerApp1/ConsumerWSService.wsdl"/>
+    <system systemId="http://192.168.43.223:8080/ConsumerApp1/ConsumerWSService?xsd=1" uri="src/jbiasa/192.168.43.223_8080/ConsumerApp1/ConsumerWSService.xsd_1.xsd"/>
+    <system systemId="http://192.168.43.223:8080/ProviderApp/ServiceService?WSDL" uri="src/jbiasa/192.168.43.223_8080/ProviderApp/ServiceService.wsdl"/>
+    <system systemId="http://192.168.43.223:8080/ProviderApp/ServiceService?xsd=1" uri="src/jbiasa/192.168.43.223_8080/ProviderApp/ServiceService.xsd_1.xsd"/>
+</catalog>
+
+
+

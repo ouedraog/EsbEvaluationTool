@@ -1,0 +1,27 @@
+<scenario id="0" name="Request size scenario">
+    <producers id="1">
+        <producer id="2" name="Provider 1" location="http://192.168.137.37:9080/BridgeProtocoleService1/esbProvider?WSDL"/>
+    </producers>
+    <consumers id="3">
+        <consumer id="4" name="Consumer 1" wsdlAdress="http://localhost:8080/ConsumerApp1/ConsumerWSService?WSDL"/>
+    </consumers>
+    <tasks id="5">
+        <task id="6" requestSize="1" responseSize="1024" requestFrequency="1000" processingTime="1" duration="5000">
+            <producer ref="2"/>
+            <consumer ref="4"/>
+        </task>
+        <task id="7" requestSize="1" responseSize="2048" requestFrequency="1000" processingTime="1" duration="5000">
+            <producer ref="2"/>
+            <consumer ref="4"/>
+        </task>
+        <task id="8" requestSize="1" responseSize="3072" requestFrequency="1000" processingTime="1" duration="5000">
+            <producer ref="2"/>
+            <consumer ref="4"/>
+        </task>
+        <task id="9" requestSize="1" responseSize="4096" requestFrequency="1000" processingTime="1" duration="5000">
+            <producer ref="2"/>
+            <consumer ref="4"/>
+        </task>
+       
+    </tasks>
+</scenario>
